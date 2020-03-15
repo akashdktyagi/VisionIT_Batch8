@@ -34,8 +34,11 @@ public class APITestCase {
 	public void t_02_get_request_breaking_steps() {
 		
 		RequestSpecification req_spec = given().baseUri(server_name);
+		
 		Response response = req_spec.when().get("/api/v1/employees");
+		
 		ValidatableResponse valid_response = response.then();
+		
 		valid_response.assertThat().statusCode(200).
 		assertThat().body("status",equalTo("success")).
 		assertThat().body("data[0].id",equalTo("1")).

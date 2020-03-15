@@ -28,8 +28,8 @@ public class TC_GoRestAPI {
 				.body("_meta.message",equalTo("OK. Everything worked as expected."))
 				.extract()
 				.response();
-		
-		System.out.println(resp.asString());
+
+		System.out.println(resp.toString());
 		
 	}
 
