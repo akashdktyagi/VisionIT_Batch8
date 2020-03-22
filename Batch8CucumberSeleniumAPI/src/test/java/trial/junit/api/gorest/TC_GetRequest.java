@@ -3,17 +3,21 @@ package trial.junit.api.gorest;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import io.restassured.response.Response;
 
-public class TC_GetRequest {
+public class TC_GetRequest extends TestBase {
 
-	String server = "https://gorest.co.in/";
-	String accessToken = "HTnPGhobc6TwQ9ManvI5zKZu9Hg7wGHzceNq";
+	String server = LoadProperties().getProperty("url");
+	String accessToken = LoadProperties().getProperty("token");
 	
 	@Test
 	public void t_01_get_request_fetch_all_users() {
