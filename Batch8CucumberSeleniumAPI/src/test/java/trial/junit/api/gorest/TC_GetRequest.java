@@ -2,16 +2,7 @@ package trial.junit.api.gorest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Properties;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 import io.restassured.response.Response;
 
 public class TC_GetRequest extends TestBase {
@@ -143,11 +134,11 @@ public class TC_GetRequest extends TestBase {
 	public void t_06_get_all_users_with_gender_as_female_and_status_as_active() {
 		Response resp = given()
 				.baseUri(server)
-				.queryParam("gender", "female")
-				.queryParam("status", "active")
+				//.queryParam("gender", "female")
+				//.queryParam("status", "active")
 				.auth().oauth2(accessToken)
 				.when()
-				.get("public-api/users" )
+				.get("/public-api/users?gender=female&status=active" )
 				.then()
 				.assertThat()
 				.statusCode(200)
