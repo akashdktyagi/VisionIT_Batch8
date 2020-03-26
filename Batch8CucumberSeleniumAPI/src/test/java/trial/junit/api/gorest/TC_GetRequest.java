@@ -12,11 +12,14 @@ public class TC_GetRequest extends TestBase {
 	
 	@Test
 	public void t_01_get_request_fetch_all_users() {
-		Response resp = given()
+		Response resp = 
+				given()
 				.baseUri(server)
 				.auth().oauth2(accessToken)
+				
 				.when()
 				.get("/public-api/users")
+				
 				.then()
 				.assertThat()
 				.statusCode(200)

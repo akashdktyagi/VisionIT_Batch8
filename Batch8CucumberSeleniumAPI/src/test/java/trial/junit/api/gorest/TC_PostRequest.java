@@ -13,8 +13,8 @@ import org.junit.Test;
 import io.restassured.response.Response;
 public class TC_PostRequest extends TestBase {
 
-	String server = "https://gorest.co.in/";
-	String accessToken = "HTnPGhobc6TwQ9ManvI5zKZu9Hg7wGHzceNq";
+	String server = LoadProperties().getProperty("url");
+	String accessToken = LoadProperties().getProperty("token");
 	
 	@Test
 	public void t_01_post_create_new_user() {
@@ -84,6 +84,9 @@ public class TC_PostRequest extends TestBase {
 		
 		System.out.println("Response for the get Request: " + resp_get.asString());
 		
+		
+		//Validate the User creation  from UI
+		//Write Selenium code
 		
 	}
 	

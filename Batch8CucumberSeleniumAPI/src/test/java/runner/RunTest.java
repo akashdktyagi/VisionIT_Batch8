@@ -14,7 +14,7 @@ import cucumber.api.junit.Cucumber;
 				"html:target/html/",
 				"json:target/json/file.json",
 		},
-		dryRun=true
+		dryRun=false
 
 		)
 public class RunTest {
