@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import org.junit.Test;
 import io.restassured.response.Response;
+import utils.TestBase;
 
 public class TC_GetRequest extends TestBase {
 

@@ -11,6 +11,7 @@ import java.util.Random;
 import org.junit.Test;
 
 import io.restassured.response.Response;
+import utils.TestBase;
 public class TC_PostRequest extends TestBase {
 
 	String server = LoadProperties().getProperty("url");
