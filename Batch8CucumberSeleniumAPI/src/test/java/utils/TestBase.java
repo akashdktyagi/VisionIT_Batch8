@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Random;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.Before;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 

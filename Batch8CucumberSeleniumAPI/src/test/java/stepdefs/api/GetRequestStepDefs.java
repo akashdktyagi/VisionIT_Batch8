@@ -18,16 +18,13 @@ import utils.TestBase;
 
 public class GetRequestStepDefs extends TestBase {
 
-	//RequestSpecification req_spec=null;
-	//Response resp=null;
-
 	Scenario scn;
-
+	
 	@Before
 	public void SetUp(Scenario s) {
 		this.scn = s;
 	}
-
+	
 	@Given("Go rest API is up and running")
 	public void go_rest_API_is_up_and_running() {
 		req_spec = given().baseUri(server).auth().oauth2(accessToken);
