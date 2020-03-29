@@ -16,7 +16,7 @@ Feature: I am testing get request for Go Rest API
     When I hit the api with get request and end point as "/public-api/users/645"
     Then API should return user details of user id "645"
     
-   Scenario: API should response status code as 404 for incorrect user
+   Scenario: API should get response status code as 404 for incorrect user
     Given Go rest API is up and running
     When I hit the api with get request and end point as "/public-api/users/6453453555353535353453"
     Then API should return user not found response for id "6453453555353535353453"

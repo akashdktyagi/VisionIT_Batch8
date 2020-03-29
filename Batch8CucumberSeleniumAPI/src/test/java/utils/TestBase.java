@@ -4,8 +4,17 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Random;
 
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
 public class TestBase {
 
+
+    protected String server = LoadProperties().getProperty("url");
+    protected String accessToken = LoadProperties().getProperty("token");
+    
+    protected static RequestSpecification req_spec=null;
+    protected static Response resp=null;
 
 	public Properties LoadProperties() {
 

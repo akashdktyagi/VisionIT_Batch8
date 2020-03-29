@@ -18,11 +18,8 @@ import utils.TestBase;
 
 public class GetRequestStepDefs extends TestBase {
 
-	String server = LoadProperties().getProperty("url");
-	String accessToken = LoadProperties().getProperty("token");
-
-	RequestSpecification req_spec=null;
-	Response resp=null;
+	//RequestSpecification req_spec=null;
+	//Response resp=null;
 
 	Scenario scn;
 
