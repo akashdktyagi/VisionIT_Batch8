@@ -17,6 +17,7 @@ public class TestBase {
     
     protected static RequestSpecification req_spec=null;
     protected static Response resp=null;
+    protected static String newUserID = null;
 
 	public Properties LoadProperties() {
 
@@ -60,4 +61,5 @@ public class TestBase {
 		return r.toString(); 
 	} 
 
+	
 }

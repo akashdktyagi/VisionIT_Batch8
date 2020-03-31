@@ -25,6 +25,12 @@ public class GetRequestStepDefs extends TestBase {
 		this.scn = s;
 	}
 	
+	@After
+	public void CleanUp() {
+		req_spec=null;
+		resp=null;
+	}
+	
 	@Given("Go rest API is up and running")
 	public void go_rest_API_is_up_and_running() {
 		req_spec = given().baseUri(server).auth().oauth2(accessToken);

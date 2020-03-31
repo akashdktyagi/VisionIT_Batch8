@@ -131,7 +131,7 @@ public class PostRequestStepDefs extends TestBase {
 	@Then("error message displayed as {string}")
 	public void error_message_displayed_as(String msg) {
 		String body_as_string = resp.asString();
-		Assert.assertTrue("Error Message:" , body_as_string.contains(msg));
+		Assert.assertTrue("Validation failed. Error Message not found." , body_as_string.contains(msg));
 	}
 	
 	@Then("API created a new User in the system")

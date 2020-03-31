@@ -11,10 +11,9 @@ Feature: I am testing put request for Go Rest API
   Scenario: Put Request, valdiation message is received when wrong gender and email is sent
     Given Go rest API is up and running
     And I have a new user created in the system
-    When I hit the api with put request and setting wrong email and gender
+    When I hit the api with put request and setting wrong email
     Then API returned the error code as 422
     And error message displayed as "Email is not a valid email address."
-    And error message displayed as "Gender is invalid."
     
   Scenario: Put request to update in-correct user then valdiation message is thrown
     Given Go rest API is up and running
