@@ -18,15 +18,14 @@ import utils.api.CmnApiMethods;
 
 public class PatchRequestStepDefs extends TestBase {
 
-	String newUserID = null;
+	TestContext testContext;
 	
-	Scenario scn;
+	public PatchRequestStepDefs(TestContext testContext) {
+		this.testContext = testContext;
+	}
+	
 	String email = GetRandomString(10) + "@gmail.com";
 	
-	@Before
-	public void SetUp(Scenario s) {
-		this.scn = s;
-	}
 
 	@When("I hit the api with patch request to update the existing user details")
 	public void i_hit_the_api_with_patch_request_to_update_the_existing_user_details() {
@@ -37,13 +36,13 @@ public class PatchRequestStepDefs extends TestBase {
 		String body_string = "{\n" + 
 				"	\"email\":\""+ email +"\"\n" + 
 				"}";
-		scn.write("body sent as: " +  body_string);
+		testContext.scn.write("body sent as: " +  body_string);
 		
-		req_spec.headers(hm_header).body(body_string);	
+		testContext.req_spec.headers(hm_header).body(body_string);	
 		
-		scn.write("End Point: " + "/public-api/users/" + newUserID);
-		resp = req_spec.when().put("/public-api/users/" + newUserID);
-		scn.write("Response Patch Request: " + resp.asString());
+		testContext.scn.write("End Point: " + "/public-api/users/" + testContext.newUserID);
+		testContext.resp = testContext.req_spec.when().put("/public-api/users/" + testContext.newUserID);
+		testContext.scn.write("Response Patch Request: " + testContext.resp.asString());
 	}
 
 }

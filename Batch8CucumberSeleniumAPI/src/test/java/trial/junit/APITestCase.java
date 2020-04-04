@@ -17,7 +17,7 @@ import java.util.Random;
 public class APITestCase {
 
 	String server_name ="http://dummy.restapiexample.com";
-	@Test
+	
 	public void t_01_get_request() {
 		
 		given().baseUri("http://dummy.restapiexample.com").
@@ -30,7 +30,7 @@ public class APITestCase {
 		
 	}
 	
-	@Test
+	
 	public void t_02_get_request_breaking_steps() {
 		
 		RequestSpecification req_spec = given().baseUri(server_name);
@@ -45,7 +45,7 @@ public class APITestCase {
 		assertThat().body("data[0].employee_name",equalTo("Tiger Nixon"));
 		
 	}
-	@Test
+	
 	public void t_03_get_request_get_single_employee_detail() {
 		RequestSpecification req_spec = given().baseUri(server_name);
 		Response response = req_spec.when().get("/api/v1/employee/1");
@@ -56,7 +56,7 @@ public class APITestCase {
 		assertThat().body("data[0].employee_name",equalTo("Tiger Nixon"));
 	}
 	
-	@Test
+	
 	public void t_04_get_request_get_incorrect_employee_detail() {
 		RequestSpecification req_spec = given().baseUri(server_name);
 		Response response = req_spec.when().get("/api/v1/employee/45644454646645654645646egeg");
@@ -67,7 +67,7 @@ public class APITestCase {
 	}
 	
 	
-	@Test
+	
 	public void t_05_post_postive_create_new_employee() {
 		
 		String dynamic_name = GetRandomString(8);

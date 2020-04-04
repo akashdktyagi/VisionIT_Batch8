@@ -15,9 +15,9 @@ public class TestBase {
     protected String server = LoadProperties().getProperty("url");
     protected String accessToken = LoadProperties().getProperty("token");
     
-    protected static RequestSpecification req_spec=null;
-    protected static Response resp=null;
-    protected static String newUserID = null;
+    //protected static RequestSpecification req_spec=null;
+    //protected static Response resp=null;
+    //protected static String newUserID = null;
 
 	public Properties LoadProperties() {
 

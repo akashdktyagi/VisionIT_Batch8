@@ -18,24 +18,24 @@ import utils.api.CmnApiMethods;
 
 public class DeleteRequestStepDefs extends TestBase {
 	
-	Scenario scn;
 	String email = GetRandomString(10) + "@gmail.com";
 	
-	@Before
-	public void SetUp(Scenario s) {
-		this.scn = s;
+	TestContext testContext;
+	
+	public DeleteRequestStepDefs(TestContext testContext) {
+		this.testContext = testContext;
 	}
 	
 	@When("I hit the api with delete request")
 	public void i_hit_the_api_with_delete_request() {
 
-		resp = req_spec.when().delete("/public-api/users/" + newUserID);
-		scn.write("Response of Delete Request: " + resp.asString());
+		testContext.resp= testContext.req_spec.when().delete("/public-api/users/" + testContext.newUserID + "4553555");
+		testContext.scn.write("Response of Delete Request: " + testContext.resp.asString());
 	}
 
 	@Then("API should delete the user")
 	public void api_should_delete_the_user() {
-		resp.then()
+		testContext.resp.then()
 		.assertThat()
 		.body("_meta.success", equalTo(true))
 		.body("_meta.code", equalTo(204))
@@ -50,8 +50,8 @@ public class DeleteRequestStepDefs extends TestBase {
 				.baseUri(server)
 				.auth().oauth2(accessToken)
 				.when()
-				.get("/public-api/users/" + newUserID);
-		scn.write("get reponse after delete: " + resp_get.asString());
+				.get("/public-api/users/" + testContext.newUserID);
+		testContext.scn.write("get reponse after delete: " + resp_get.asString());
 		
 		resp_get.then()
 				.assertThat()
@@ -59,7 +59,7 @@ public class DeleteRequestStepDefs extends TestBase {
 				.body("_meta.code", equalTo(404))
 				.body("_meta.message",equalTo("The requested resource does not exist."))
 				.body("result.name", equalTo("Not Found"))
-				.body("result.message", equalTo("Object not found: " + newUserID));
+				.body("result.message", equalTo("Object not found: " + testContext.newUserID));
 	}
 
 }
