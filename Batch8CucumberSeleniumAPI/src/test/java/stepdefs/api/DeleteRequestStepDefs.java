@@ -37,7 +37,7 @@ public class DeleteRequestStepDefs extends TestBase {
 	public void api_should_delete_the_user() {
 		testContext.resp.then()
 		.assertThat()
-		.body("_meta.success", equalTo(true))
+		.body("_meta.success", equalTo(false))
 		.body("_meta.code", equalTo(204))
 		.body("_meta.message", equalTo("The request was handled successfully and the response contains no body content."))
 		.body("result", equalTo(null));
