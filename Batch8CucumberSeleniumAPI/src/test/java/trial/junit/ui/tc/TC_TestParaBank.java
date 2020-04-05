@@ -8,7 +8,7 @@ import trial.junit.ui.po.PO_Login;
 
 public class TC_TestParaBank {
 	
-	@Test
+
 	public void t_01_login() {
 		
 		WebDriver driver = new ChromeDriver();

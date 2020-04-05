@@ -19,11 +19,10 @@ import utils.TestBase;
 
 public class PostRequestStepDefs extends TestBase {
 
-	Scenario scn;
+	TestContext testContext;
 	
-	@Before
-	public void SetUp(Scenario s) {
-		this.scn = s;
+	public PostRequestStepDefs(TestContext testContext) {
+		this.testContext = testContext;
 	}
 	
 	String email = GetRandomString(10) + "@gmail.com";
@@ -46,9 +45,9 @@ public class PostRequestStepDefs extends TestBase {
 				"	\"first_name\":\"firstnamevisionit\",\n" + 
 				"	\"email\":\""+ email +"\"\n" + 
 				"}";
-		scn.write("body sent as: " +  body_string);
+		testContext.scn.write("body sent as: " +  body_string);
 		
-		req_spec.headers(hm_header).body(body_string);	
+		testContext.req_spec.headers(hm_header).body(body_string);	
 	}
 	
 	
@@ -56,7 +55,7 @@ public class PostRequestStepDefs extends TestBase {
 	public void i_set_header_and_but_with_out_any_body() {
 		HashMap<String,String> hm_header = new HashMap<String,String>();
 		hm_header.put("Content-Type", "application/json");		
-		req_spec.headers(hm_header);
+		testContext.req_spec.headers(hm_header);
 	}
 	
 	@Given("I set header and body with fields but no values")
@@ -70,9 +69,9 @@ public class PostRequestStepDefs extends TestBase {
 				"	\"email\":\"\",\n" + 
 				"	\"gender\":\"\"\n" + 
 				"}";
-		scn.write("body sent as: " +  body_string);
+		testContext.scn.write("body sent as: " +  body_string);
 		
-		req_spec.headers(hm_header).body(body_string);
+		testContext.req_spec.headers(hm_header).body(body_string);
 	}
 	
 	@Given("I set header and body with incorrect email and gender")
@@ -86,8 +85,8 @@ public class PostRequestStepDefs extends TestBase {
 				"	\"email\":\"234234\",\n" + 
 				"	\"gender\":\"2344424\"\n" + 
 				"}";
-		scn.write("body sent as: " +  body_string);
-		req_spec.headers(hm_header).body(body_string);
+		testContext.scn.write("body sent as: " +  body_string);
+		testContext.req_spec.headers(hm_header).body(body_string);
 	}
 
 	@Given("I set header and body with incorrect data types are sent for every mandatory field")
@@ -101,9 +100,9 @@ public class PostRequestStepDefs extends TestBase {
 				"	\"email\":34324,\n" + 
 				"	\"gender\":2343242\n" + 
 				"}";
-		scn.write("body sent as: " +  body_string);
+		testContext.scn.write("body sent as: " +  body_string);
 		
-		req_spec.headers(hm_header).body(body_string);
+		testContext.req_spec.headers(hm_header).body(body_string);
 	}
 	
 	/*
@@ -114,8 +113,8 @@ public class PostRequestStepDefs extends TestBase {
 
 	@When("I hit the api with post request and end point as {string}")
 	public void i_hit_the_api_with_post_request_and_end_point_as(String endPoint) {
-		resp = req_spec.when().post(endPoint);
-		scn.write("response:  " + resp.asString());
+		testContext.resp = testContext.req_spec.when().post(endPoint);
+		testContext.scn.write("response:  " + testContext.resp.asString());
 	}
 
 	/*
@@ -125,18 +124,18 @@ public class PostRequestStepDefs extends TestBase {
 	 */
 	@Then("API returned the error code as {int}")
 	public void api_returned_the_error_code_as(Integer statusCode) {
-		resp.then().assertThat().body("_meta.code", equalTo(statusCode));
+		testContext.resp.then().assertThat().body("_meta.code", equalTo(statusCode));
 	}
 
 	@Then("error message displayed as {string}")
 	public void error_message_displayed_as(String msg) {
-		String body_as_string = resp.asString();
+		String body_as_string = testContext.resp.asString();
 		Assert.assertTrue("Validation failed. Error Message not found." , body_as_string.contains(msg));
 	}
 	
 	@Then("API created a new User in the system")
 	public void api_created_a_new_User_in_the_system() {
-		resp.then()
+		testContext.resp.then()
 		.statusCode(302)
 		.assertThat()
 		.body("_meta.success", equalTo(true))
@@ -152,13 +151,13 @@ public class PostRequestStepDefs extends TestBase {
 
 	@Then("I can find the new user in the system when i get the user")
 	public void i_can_find_the_new_user_in_the_system_when_i_get_the_user() {
-		String id = resp.jsonPath().getString("result.id");
+		String id = testContext.resp.jsonPath().getString("result.id");
 		Response resp_get = given()
 				.baseUri(server)
 				.auth().oauth2(accessToken)
 				.when()
 				.get("/public-api/users/" + id);
-		scn.write("get reponse after post: " + resp_get.asString());
+		testContext.scn.write("get reponse after post: " + resp_get.asString());
 		
 		resp_get.then()
 				.assertThat()
