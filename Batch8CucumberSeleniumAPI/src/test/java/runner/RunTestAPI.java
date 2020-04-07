@@ -20,7 +20,7 @@ import cucumber.api.junit.Cucumber;
 		dryRun=false
 
 		)
-public class RunTest {
+public class RunTestAPI {
 
 	//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 }
