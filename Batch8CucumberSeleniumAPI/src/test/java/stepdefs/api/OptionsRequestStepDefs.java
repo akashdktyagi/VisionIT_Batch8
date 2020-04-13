@@ -1,12 +1,13 @@
 package stepdefs.api;
 
 import static org.hamcrest.Matchers.equalTo;
+
+import context.TestBaseAPI;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import utils.TestBase;
 
 
-public class OptionsRequestStepDefs extends TestBase {
+public class OptionsRequestStepDefs extends TestBaseAPI {
 	
 	TestContext testContext;
 	

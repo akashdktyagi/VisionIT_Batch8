@@ -7,10 +7,10 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.HashMap;
 
+import context.TestBaseAPI;
 import io.restassured.response.Response;
-import utils.TestBase;
 
-public class CmnApiMethods extends TestBase {
+public class CmnApiMethods extends TestBaseAPI {
 
 	
 	public String CreateNewUserInGoRestAPI() {
