@@ -1,4 +1,4 @@
-package utils;
+package context;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -9,7 +9,7 @@ import cucumber.api.java.Before;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class TestBase {
+public class TestBaseAPI {
 
 
     protected String server = LoadProperties().getProperty("url");

@@ -55,7 +55,7 @@ public class SearchStepDefs {
 	}
 	
 	@Given("I have browser opened and url is navigated")
-	public void i_have_browser_opened_and_url_is_navigated() {
+	public void i_have_browser_opened_and_url_is_navigated() {				
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
 		driver.manage().window().maximize();
@@ -74,7 +74,7 @@ public class SearchStepDefs {
 
 	@Then("product list should appear pertaining to the product search as {string}")
 	public void product_list_should_appear_pertaining_to_the_product_search_as(String productName) {
-		searchPageObjects = new SearchPageObjects(driver);
+		searchPageObjects = new SearchPageObjects(driver,scn);
 		searchPageObjects.ValidateProductList(productName);
 	}
 	

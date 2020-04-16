@@ -6,12 +6,12 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.not;
 
+import context.TestBaseAPI;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import utils.TestBase;
 
-public class GetRequestStepDefs extends TestBase {
+public class GetRequestStepDefs extends TestBaseAPI {
 	
 	TestContext testContext;
 	

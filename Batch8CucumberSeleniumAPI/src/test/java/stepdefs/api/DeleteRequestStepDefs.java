@@ -7,16 +7,16 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.HashMap;
 
+import context.TestBaseAPI;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-import utils.TestBase;
 import utils.api.CmnApiMethods;
 
-public class DeleteRequestStepDefs extends TestBase {
+public class DeleteRequestStepDefs extends TestBaseAPI {
 	
 	String email = GetRandomString(10) + "@gmail.com";
 	
