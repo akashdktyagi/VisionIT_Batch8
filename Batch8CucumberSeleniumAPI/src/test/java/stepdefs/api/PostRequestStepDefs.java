@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 import org.junit.Assert;
 
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -17,11 +17,11 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
-public class PostRequestStepDefs extends TestBaseAPI {
+public class PostRequestStepDefs extends TestBase {
 
-	TestContext testContext;
+	TestContextAPI testContext;
 	
-	public PostRequestStepDefs(TestContext testContext) {
+	public PostRequestStepDefs(TestContextAPI testContext) {
 		this.testContext = testContext;
 	}
 	

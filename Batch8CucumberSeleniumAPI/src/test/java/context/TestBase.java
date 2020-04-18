@@ -9,16 +9,14 @@ import cucumber.api.java.Before;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class TestBaseAPI {
+public class TestBase {
 
 
     protected String server = LoadProperties().getProperty("url");
     protected String accessToken = LoadProperties().getProperty("token");
     
-    //protected static RequestSpecification req_spec=null;
-    //protected static Response resp=null;
-    //protected static String newUserID = null;
-
+    protected String serverUI = LoadProperties().getProperty("url_ui");
+    
 	public Properties LoadProperties() {
 
 		try {

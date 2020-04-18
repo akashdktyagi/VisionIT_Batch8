@@ -5,17 +5,16 @@ import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.not;
-
-import context.TestBaseAPI;
+import context.*;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class GetRequestStepDefs extends TestBaseAPI {
+public class GetRequestStepDefs extends TestBase {
 	
-	TestContext testContext;
+	TestContextAPI testContext;
 	
-	public GetRequestStepDefs(TestContext testContext) {
+	public GetRequestStepDefs(TestContextAPI testContext) {
 		this.testContext = testContext;
 	}
 	

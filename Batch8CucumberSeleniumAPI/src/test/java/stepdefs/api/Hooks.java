@@ -6,9 +6,9 @@ import cucumber.api.java.Before;
 
 public class Hooks {
 	
-	TestContext testContext;
+	TestContextAPI testContext;
 	
-	public Hooks(TestContext testContext) {
+	public Hooks(TestContextAPI testContext) {
 		this.testContext = testContext;
 	}
 

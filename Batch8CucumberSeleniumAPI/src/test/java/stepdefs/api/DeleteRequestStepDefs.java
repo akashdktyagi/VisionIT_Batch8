@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.HashMap;
 
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -16,13 +16,13 @@ import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import utils.api.CmnApiMethods;
 
-public class DeleteRequestStepDefs extends TestBaseAPI {
+public class DeleteRequestStepDefs extends TestBase {
 	
 	String email = GetRandomString(10) + "@gmail.com";
 	
-	TestContext testContext;
+	TestContextAPI testContext;
 	
-	public DeleteRequestStepDefs(TestContext testContext) {
+	public DeleteRequestStepDefs(TestContextAPI testContext) {
 		this.testContext = testContext;
 	}
 	

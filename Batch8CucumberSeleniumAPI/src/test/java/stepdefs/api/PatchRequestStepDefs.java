@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.HashMap;
 
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -16,11 +16,11 @@ import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import utils.api.CmnApiMethods;
 
-public class PatchRequestStepDefs extends TestBaseAPI {
+public class PatchRequestStepDefs extends TestBase {
 
-	TestContext testContext;
+	TestContextAPI testContext;
 	
-	public PatchRequestStepDefs(TestContext testContext) {
+	public PatchRequestStepDefs(TestContextAPI testContext) {
 		this.testContext = testContext;
 	}
 	
