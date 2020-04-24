@@ -21,6 +21,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageobjects.CmnPageObjects;
 import pageobjects.SearchPageObjects;
+import utils.manager.driver.DriverFactory;
+import utils.manager.driver.DriverManager;
 
 public class SearchStepDefs extends TestBase{
 
@@ -32,12 +34,21 @@ public class SearchStepDefs extends TestBase{
 	}
 	
 	@Given("^I have browser opened and url is navigated$")
-	public void i_have_browser_opened_and_url_is_navigated() {				
+	public void i_have_browser_opened_and_url_is_navigated() throws Exception {	
+		
+		DriverManager driverManager = DriverFactory.getDriverManager("chrome");
+		WebDriver driver = driverManager.getDriver();
+		driverManager.maximizeBrowser();
+		driverManager.navigateToDriver(serverUI);
+		scn.write("Chrome Driver invoked and URL navigated as: " + serverUI);
+		
+		/*
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
 		driver.manage().window().maximize();
 		driver.get(serverUI);
 		scn.write("Chrome Driver invoked and URL navigated as: " + serverUI);
+		*/
 		
 		//Assign driver and set page Objects to Test Context 
 		testContextUI.setDriver(driver);
