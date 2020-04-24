@@ -12,8 +12,8 @@ import io.restassured.specification.RequestSpecification;
 public class TestBase {
 
 
-    protected String server = LoadProperties().getProperty("url");
-    protected String accessToken = LoadProperties().getProperty("token");
+    protected  String server = LoadProperties().getProperty("url");
+    protected  String accessToken = LoadProperties().getProperty("token");
     
     protected String serverUI = LoadProperties().getProperty("url_ui");
     

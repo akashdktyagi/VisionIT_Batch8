@@ -31,7 +31,7 @@ public class SearchStepDefs extends TestBase{
 		this.testContextUI = testContextUI;
 	}
 	
-	@Given("I have browser opened and url is navigated")
+	@Given("^I have browser opened and url is navigated$")
 	public void i_have_browser_opened_and_url_is_navigated() {				
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);

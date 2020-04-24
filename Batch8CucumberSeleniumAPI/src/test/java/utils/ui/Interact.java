@@ -13,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import cucumber.api.Scenario;
+
 /**
  * 
  * @author akashtyagi
@@ -84,5 +86,9 @@ public abstract class Interact {
 		TakesScreenshot shot = (TakesScreenshot)driver.findElement(by);
 		logger.info("Screen Shot taken for element and returned as a file. By descp: " + by.toString());
 		return shot.getScreenshotAs(OutputType.FILE);
+	}
+	
+	public void takeScreenShotAndAttachInReport(Scenario s) {
+		s.embed(takeScreenShot(), "image/png");
 	}
 }
