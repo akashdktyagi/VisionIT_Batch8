@@ -1,4 +1,4 @@
-@patch
+@api @patch
 Feature: I am testing patch request for Go Rest API
 
   Scenario: Patch request to update user in the Go Rest DB

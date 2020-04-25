@@ -1,4 +1,4 @@
-@get
+@api @get
 Feature: I am testing get request for Go Rest API
 	@sanity
   Scenario: Get request to fetch all users
