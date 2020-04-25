@@ -1,4 +1,4 @@
-@put
+@api @put
 Feature: I am testing put request for Go Rest API
 
   Scenario: Put request to update user in the Go Rest DB

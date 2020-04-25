@@ -21,8 +21,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageobjects.CmnPageObjects;
 import pageobjects.SearchPageObjects;
-import utils.manager.driver.DriverFactory;
-import utils.manager.driver.DriverManager;
+import utils.manager.driver.factory.DriverFactory;
+import utils.manager.driver.factory.DriverManager;
+import utils.manager.driver.singleton.WebDriverManagerSingleton;
+import utils.manager.driver.staticmethod.WebDriverManagerSimple;
 
 public class SearchStepDefs extends TestBase{
 
@@ -35,21 +37,33 @@ public class SearchStepDefs extends TestBase{
 	
 	@Given("^I have browser opened and url is navigated$")
 	public void i_have_browser_opened_and_url_is_navigated() throws Exception {	
-		
+
+		/* Various ways of invoking Web Driver*/
+		/* Mehtod - 1*/
 		DriverManager driverManager = DriverFactory.getDriverManager("chrome");
 		WebDriver driver = driverManager.getDriver();
 		driverManager.maximizeBrowser();
 		driverManager.navigateToDriver(serverUI);
-		scn.write("Chrome Driver invoked and URL navigated as: " + serverUI);
 		
+		/* OR Mehtod - 2*/
 		/*
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
-		driver.manage().window().maximize();
-		driver.get(serverUI);
-		scn.write("Chrome Driver invoked and URL navigated as: " + serverUI);
+		 *WebDriver driver = new ChromeDriver();
+		 *driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+		 *driver.manage().window().maximize();
+		 *driver.get(serverUI);
 		*/
 		
+
+		/* OR Mehtod - 3*/
+		/*
+		 WebDriver driver = WebDriverManagerSingleton.getInstanceOfWebDriverManager().getDriver();
+		*/
+		
+		/* OR Mehtod - 4*/
+		/*
+		WebDriver driver = WebDriverManagerSimple.getDriver("chrome");
+		*/
+		scn.write("Chrome Driver invoked and URL navigated as: " + serverUI);
 		//Assign driver and set page Objects to Test Context 
 		testContextUI.setDriver(driver);
 		testContextUI.initializePageObjectClasses(driver, scn);

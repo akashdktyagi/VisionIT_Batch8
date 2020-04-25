@@ -1,4 +1,4 @@
-@options
+@api @options
 Feature: I am testing options request Go Rest API
     
   Scenario: Options request to check available methods

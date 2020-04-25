@@ -1,4 +1,4 @@
-@post
+@api @post
 Feature: I am testing post request for Go Rest API
 
 	@sanity

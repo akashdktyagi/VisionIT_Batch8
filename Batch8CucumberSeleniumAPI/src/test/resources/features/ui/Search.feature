@@ -1,4 +1,4 @@
-@search
+@ui @search
 Feature: Search functionality
 
   Scenario: Search a product 

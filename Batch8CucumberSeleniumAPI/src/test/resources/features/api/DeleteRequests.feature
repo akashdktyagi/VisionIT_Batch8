@@ -1,4 +1,4 @@
-@delete
+@api @delete
 Feature: I am testing delete requests for Go Rest API
     
   Scenario: Delete request to update user in the Go Rest DB

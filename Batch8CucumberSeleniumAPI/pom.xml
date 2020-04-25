@@ -16,11 +16,17 @@
 	<profiles>
 
 		<profile>
-			<id>cuke-options</id>
+			<id>run-api</id>
 			<properties>
-				<cucumber.options>--tags "@dev and not @ignore"</cucumber.options>
+				<cucumber.options>--tags "@api"</cucumber.options>
 			</properties>
+		</profile>
 
+		<profile>
+			<id>run-ui</id>
+			<properties>
+				<cucumber.options>--tags "@ui"</cucumber.options>
+			</properties>
 		</profile>
 
 	</profiles>
@@ -119,15 +125,14 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
 				<configuration>
-					<parallel>methods</parallel>
-					<threadCount>4</threadCount>
-					<perCoreThreadCount>false</perCoreThreadCount>
-					<!-- <useUnlimitedThreads>true</useUnlimitedThreads> -->
-					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+					<systemPropertyVariables>
+						<cucumber.options>${cucumber.options}</cucumber.options>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
+	<!--<parallel>methods</parallel> <threadCount>4</threadCount> <perCoreThreadCount>false</perCoreThreadCount> 
+		<useUnlimitedThreads>true</useUnlimitedThreads> <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine> -->
 
 </project>
