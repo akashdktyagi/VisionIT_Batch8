@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features="classpath:features/ui",
+		features="classpath:features/ui/HomePage.feature",
 		glue="stepdefs.ui",
 		tags="",
 		plugin = {"pretty",

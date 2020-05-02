@@ -64,6 +64,12 @@ public abstract class Interact {
 		return element.findElements(by);
 	}
 	
+	public boolean validateElementIsDisplayed(By by) {
+		boolean b = driver.findElement(by).isDisplayed();
+		logger.info("Element is Displayed status: " + by.toString());
+		return b;
+	}
+	
 	public byte[] takeScreenShot() {
 		TakesScreenshot shot = (TakesScreenshot)driver;
 		logger.info("Screen Shot taken for full driver. ");
