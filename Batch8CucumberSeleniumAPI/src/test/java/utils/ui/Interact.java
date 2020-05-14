@@ -32,7 +32,7 @@ public abstract class Interact {
 	public void setDriver(WebDriver d) {
 		this.driver=d;
 	}
-	
+		
 	public WebElement clickElement(By by) {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));

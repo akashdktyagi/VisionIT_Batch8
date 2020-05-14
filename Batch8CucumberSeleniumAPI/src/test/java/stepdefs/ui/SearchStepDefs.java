@@ -82,6 +82,26 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getSearchPageObjects().ValidateProductList(productName);
 	}
 	
+	@When("I click on hamburger menu")
+	public void i_click_on_hamburger_menu() {
+		testContextUI.getCmnPageObjects().ClickOnHamburgerMenuButton();
+	}
+
+	@When("I click on hamburger menu with category as {string}")
+	public void i_click_on_hamburger_menu_with_category_as(String category) {
+		testContextUI.getCmnPageObjects().ClickOnHamburgerMenuProductCategoryLink(category);
+	}
+	
+	@When("I click on hamburger menu with sub category as {string}")
+	public void i_click_on_hamburger_menu_with_sub_category_as(String subCategory) {
+		testContextUI.getCmnPageObjects().ClickOnHamburgerMenuProductSubCategoryLink(subCategory);
+	}
+
+	@Then("Search results are displayed for products related to {string}")
+	public void search_results_are_displayed_for_products_related_to(String expectedTitle) throws Exception {
+		testContextUI.getCmnPageObjects().validatePageTitleMatch(expectedTitle);
+	}
+	
 	@Before
 	public void SetUp(Scenario s) {
 		this.scn = s;
