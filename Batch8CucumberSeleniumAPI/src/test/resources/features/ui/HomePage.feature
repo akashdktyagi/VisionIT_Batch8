@@ -6,7 +6,6 @@ Feature: Home Page Validation
 		Then Below header Links are displayed
 			|hamburger menu   |
 			|amazon prime logo|
-			|xdffgfddgdg|
 			|accounts and list link|
 			|return and orders|
 			|your prime link|
