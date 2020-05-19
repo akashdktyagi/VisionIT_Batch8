@@ -1,5 +1,6 @@
 package stepdefs.ui;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -30,6 +31,7 @@ public class SearchStepDefs extends TestBase{
 
 	TestContextUI testContextUI;
 	Scenario scn;
+	String productClickedTextExpected;
 	
 	public SearchStepDefs(TestContextUI testContextUI) {
 		this.testContextUI = testContextUI;
@@ -101,6 +103,19 @@ public class SearchStepDefs extends TestBase{
 	public void search_results_are_displayed_for_products_related_to(String expectedTitle) throws Exception {
 		testContextUI.getCmnPageObjects().validatePageTitleMatch(expectedTitle);
 	}
+	
+	@When("I click on any product in the Search Result")
+	public void i_click_on_any_product_in_the_Search_Result() {
+		productClickedTextExpected = testContextUI.getSearchPageObjects().ClickOnProductLink();
+	}
+
+	@Then("I am able to see product description and detail in new tab")
+	public void i_am_able_to_see_product_description_and_detail_in_new_tab() {
+		testContextUI.getProductDescriptionObjects().switchToSecondWindowTab();
+		testContextUI.getProductDescriptionObjects().ValidateProductDescriptionHeader(productClickedTextExpected);
+		testContextUI.getProductDescriptionObjects().switchToDefaultWindowTab();	
+	}
+	
 	
 	@Before
 	public void SetUp(Scenario s) {

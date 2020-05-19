@@ -2,6 +2,7 @@ package utils.ui;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,6 +42,13 @@ public abstract class Interact {
 		return element;
 	}
 	
+	public void clickElement(WebElement webElement) {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		webElement.click();
+		logger.info("Element is clicked. Element Description: " + webElement.toString());
+	}
+	
 	public WebElement setElement(By by, String text) {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
@@ -57,6 +65,14 @@ public abstract class Interact {
 		return value;
 	}
 	
+	public String getText(By by) {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+		String value = element.getText();
+		logger.info("Get Text for element: " + by.toString() + " Text : " + value);
+		return value;
+	}
+	
 	public List<WebElement> getListOfWebElements(By by){
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -68,6 +84,18 @@ public abstract class Interact {
 		boolean b = driver.findElement(by).isDisplayed();
 		logger.info("Element is Displayed status: " + by.toString());
 		return b;
+	}
+	
+	public void switchToSecondWindowTab() {
+		String [] handles = (String[]) driver.getWindowHandles().toArray();
+		driver.switchTo().window(handles[1]);
+		logger.info("Browser Switched to second window tab.");
+	}
+	
+	public void switchToDefaultWindowTab() {
+		String [] handles = (String[]) driver.getWindowHandles().toArray();
+		driver.switchTo().window(handles[0]);
+		logger.info("Browser Switched to parent window tab.");
 	}
 	
 	public byte[] takeScreenShot() {
