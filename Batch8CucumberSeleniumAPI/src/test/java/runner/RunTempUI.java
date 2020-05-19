@@ -10,14 +10,14 @@ import cucumber.api.junit.Cucumber;
 
 		features="classpath:features/ui",
 		glue="stepdefs.ui",
-		tags="@TC0004",
+		tags="@TC0008",
 		plugin = {"pretty",
 				"html:target/html/",
 				"json:target/json/file.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 		},
 		strict=false,
-		dryRun=false
+		dryRun=true
 
 		)
 public class RunTempUI {
