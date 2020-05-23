@@ -16,4 +16,12 @@ Feature: Home Page Validation
 	Scenario: This is a Dummy test case from akash
 	  Given I have browser opened and url is navigated-Dummy Step
 		Then Below header Links are displayed-Dummy Step
-			
+
+		@TC0027
+		Scenario: Validate Header links-dummy test- by sarang
+	  Given I have browser opened and url is navigated-dummy test- by sarang
+		hello there all how are you
+		Given I have browser opened and url is navigated-dummy test- by sarang
+		Given I have browser opened and url is navigated-dummy test- by sarang
+		Given I have browser opened and url is navigated-dummy test- by sarang
+
