@@ -12,10 +12,4 @@ Feature: Home Page Validation
 			|your prime link|
 			|cart link|
 	
-		@TC0027
-		Scenario: Validate Header links-dummy test- by sarang
-	  Given I have browser opened and url is navigated-dummy test- by sarang
-		hello there all how are you
-		Given I have browser opened and url is navigated-dummy test- by sarang
-		Given I have browser opened and url is navigated-dummy test- by sarang
-		Given I have browser opened and url is navigated-dummy test- by sarang
+			
