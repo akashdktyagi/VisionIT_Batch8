@@ -11,11 +11,5 @@ Feature: Home Page Validation
 			|return and orders|
 			|your prime link|
 			|cart link|
-			
-			
 	
-	@TC0034
-	Scenario: Mouse Hover
-	  Given I have browser opened and url is navigated
-		When I move mouse over the header link accounts 
-		Then user should see pop window should appear
+			
