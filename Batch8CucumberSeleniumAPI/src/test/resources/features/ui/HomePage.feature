@@ -18,4 +18,4 @@ Feature: Home Page Validation
 	Scenario: Mouse Hover
 	  Given I have browser opened and url is navigated
 		When I move mouse over the header link accounts 
-		Then pop window should appear
+		Then user should see pop window should appear
