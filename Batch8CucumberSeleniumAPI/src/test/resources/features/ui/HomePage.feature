@@ -9,5 +9,7 @@ Feature: Home Page Validation
 			|amazon prime logo|
 			|accounts and list link|
 			|return and orders|
-
+			|your prime link|
+			|cart link|
+	
 			
