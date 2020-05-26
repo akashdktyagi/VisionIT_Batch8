@@ -15,12 +15,22 @@ Feature: Search functionality
 	  And I click on hamburger menu with category as "Mobiles, Computers"
 	  And I click on hamburger menu with sub category as "Power Banks"
 	  Then Search results are displayed for products related to "Power Banks"
-	  
-	  
-	 @TC0008 
+	
+	@TC0008 
 	 Scenario: A User Should Be Able To Click On A Product Link From The Search Page And Product Description Page Should Be Displayed.
 		Given I have browser opened and url is navigated
 		When I search for product as "Dell"
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
-	  
+	
+	@TC0033  
+	Scenario: A user should be able to search a product under price range
+		Given I have browser opened and url is navigated
+		When I search for product as "Dell"
+		Then product list should appear pertaining to the product search as "Dell"
+		And I click on sorted by menu
+		Then product should be sorted under its price range
+	
+	
+	
+	
