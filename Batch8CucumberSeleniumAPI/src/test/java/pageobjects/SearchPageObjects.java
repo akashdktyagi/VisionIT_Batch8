@@ -62,8 +62,8 @@ public class SearchPageObjects extends Interact {
 	
 	
 	public String ClickOnProductLinsdsfsffdk(String productTextContains) {
-		List<WebElement> list = getListOfWebElements(product_list_all);
-		boolean flag=false;
+
+
 		int counter=0;
 		for(int i=0;i<list.size();i++) {
 			if (list.get(i).getText().contains(productTextContains)) {
