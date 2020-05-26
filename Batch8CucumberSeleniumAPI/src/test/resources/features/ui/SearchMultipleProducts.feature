@@ -13,4 +13,4 @@ Feature: Search Mutiple Product Fuctionality
     |The Power of Your Subconscious Mind (DELUXE HARDBOUND EDITION)|
     |First Trimester Ultrasound Diagnosis of Fetal Abnormalities|
     
-    When I Check Out
+    When Check Out 
