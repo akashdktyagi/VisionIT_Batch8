@@ -23,4 +23,31 @@ public class HomePageStepDefs {
 		}
 
 	}
+	
+	@Then("Below header Links are displayed")
+	public void asdsd(List<String> list) throws Exception {
+
+		for (int i=0;i<list.size();i++) {
+			testContextUI.getCmnPageObjects().validateElementPresentInHeaderSection(list.get(i));	
+		}
+
+	}
+	
+	@Then("Below header Links are displayed")
+	public void asdadadssff(List<String> list) throws Exception {
+
+		for (int i=0;i<list.size();i++) {
+			testContextUI.getCmnPageObjects().validateElementPresentInHeaderSection(list.get(i));	
+		}
+
+	}
+	
+	@Then("Below header Links are displayed")
+	public void sdfsdfsfsdf(List<String> list) throws Exception {
+
+		for (int i=0;i<list.size();i++) {
+			testContextUI.getCmnPageObjects().validateElementPresentInHeaderSection(list.get(i));	
+		}
+
+	}
 }

@@ -60,6 +60,32 @@ public class SearchPageObjects extends Interact {
 
 	}
 	
+	
+	public String ClickOnProductLinsdsfsffdk(String productTextContains) {
+		List<WebElement> list = getListOfWebElements(product_list_all);
+		boolean flag=false;
+		int counter=0;
+		for(int i=0;i<list.size();i++) {
+			if (list.get(i).getText().contains(productTextContains)) {
+				clickElement(list.get(i));
+				counter=i;
+				flag=true;
+				break;
+			}
+		}
+		
+		if (flag) {
+			scn.write("Clicked on Product containing text as: " + productTextContains + "");
+		}else {
+			scn.write("Unable to click on Product containing text as: " + productTextContains + " No product found with mentioned text");
+			Assert.fail("Unable to click on Product containing text as: " + productTextContains + " No product found with mentioned text");
+		}
+		
+		return list.get(counter).getText();
+
+	}
+	
+	
 	public void ValidateProductList(String productName) {
 	
 		List<WebElement> list_products = getListOfWebElements(product_list);
