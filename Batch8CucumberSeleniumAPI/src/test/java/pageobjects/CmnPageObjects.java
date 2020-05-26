@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -33,6 +34,11 @@ public class CmnPageObjects extends Interact {
 		this.scn = s;
 	}
 
+	public void MoveMouseOnAccountsAndList() {
+		Actions action = new Actions(getDriver());
+		action.doubleClick().contextClick().build().perform();
+	}
+	
 	public void SetSearchTextBox(String text) {
 		setElement(search_text_box, text);
 		logger.info("Value enetered in search box: " + text);

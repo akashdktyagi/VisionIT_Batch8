@@ -12,4 +12,14 @@ Feature: Home Page Validation
 			|your prime link|
 			|cart link|
 	
+	@TC0024
+	Scenario: Validate Accounts and Links Fly Out Pop Up
+	  Given I have browser opened and url is navigated
+		When I move mouse on the "Accounts and Links"
+		And I click on "Your Account" Link in the  Accounts and Links Fly Out Pop up
+		Then I navigate to "Your Account" Page
+		
+		
+		
+			
 			
