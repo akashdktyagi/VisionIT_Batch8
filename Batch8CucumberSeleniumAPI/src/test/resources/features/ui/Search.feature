@@ -1,8 +1,7 @@
 @ui @search
 Feature: Search functionality
 
-
-	@TC0001
+@TC0001
   Scenario: Search a product 
     Given I have browser opened and url is navigated
     When I search for product as "Dell"
@@ -29,6 +28,9 @@ Feature: Search functionality
 		And I search for product as "Dell"
 		When I sort the result by price range
 		Then product should be displayed sorted by price range
+		
+		And This is a trial line just to clear my doubt plz avoid this
+		
 	
 	
 	
