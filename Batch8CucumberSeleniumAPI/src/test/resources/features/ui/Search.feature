@@ -24,12 +24,11 @@ Feature: Search functionality
 		Then I am able to see product description and detail in new tab
 	
 	@TC0033  
-	Scenario: A user should be able to search a product under price range
+	Scenario: A user wants to search a product under price range
 		Given I have browser opened and url is navigated
-		When I search for product as "Dell"
-		Then product list should appear pertaining to the product search as "Dell"
-		And I click on sorted by menu
-		Then product should be sorted under its price range
+		And I search for product as "Dell"
+		When I sort the result by price range
+		Then product should be displayed sorted by price range
 	
 	
 	
