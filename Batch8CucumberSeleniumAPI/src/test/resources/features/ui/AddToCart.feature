@@ -29,6 +29,16 @@ Feature: Add to cart functionality
       | name   | 
       | Dell   |   
       | Mobile |  	
+   
+   
+   @TC0036
+  Scenario: Add A Product To Cart and Validate	
+    Given I have browser opened and url is navigated
+    When I search for product as "Dell"
+    And I click on any product in the Search Result
+    And I click on Add to Cart button
+    Then Count Of The Cart Should Be Displayed As 1
+    And I click on Cart
+    And User Should Be Able To Navigate To Cart Window With The Product Added
       
    
-      
