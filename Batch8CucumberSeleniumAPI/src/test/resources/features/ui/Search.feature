@@ -29,8 +29,6 @@ Feature: Search functionality
 		When I sort the result by price range
 		Then product should be displayed sorted by price range
 		
-		And This is a trial line just to clear my doubt plz avoid this
-		
 	
 	
 	
