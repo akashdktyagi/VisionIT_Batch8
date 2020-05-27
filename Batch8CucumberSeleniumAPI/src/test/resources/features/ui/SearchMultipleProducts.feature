@@ -6,11 +6,44 @@ Feature: Search Mutiple Product Fuctionality
   @TC0037
   Scenario: Search Mutiple Products
     Given I have browser opened and url is navigated
-    When I search and add products
-    |Product Name|
-    |Apple iPhone XR (64GB) - White|
-    |Gandiva Desktop Computer PC (Core i5 1st Generation CPU / 8GB DDR3 RAM / 18.5 Inch LED Monitor/USB Keyboard & Mouse/WiFi) Pre Installed Windows 10 Professional (Trail Version) (500GB Hard Drive)|
-    |The Power of Your Subconscious Mind (DELUXE HARDBOUND EDITION)|
-    |First Trimester Ultrasound Diagnosis of Fetal Abnormalities|
+    Then I search Products
+     |Products|
+     |Mobile|
+     |Computer|
+     |LED TV|
+     |Pantry|
+     |Kitchen|
+     |toy train|
+     |toy cars|
+     |sport shoes for mens|
+     |gogless for boys|
+     |books in hindi best seller|
+     
+    And Click on Search 
+    Then Select product from the "Produts" list and Click on Product
+    |Products Name|
+    |Apple iPhone XR (64GB) - Blue|
+    |Gandiva Desktop Computer (Core 2 Duo CPU / 4GB DDR2 Desktop RAM/No DVD Drive/USB Keyboard and Mouse / 15.6 Inch Monitor/WiFi Facility) with Windows 7 Trail Version Pre Installed (250GB HDD)|
+    |DETEL 80 cm (32 Inches) DI32SF HD LED TV with 1 Year Warranty (Black) (2019 Model)|
+    |Dabur Lal Tail 500ml – Ayurvedic Baby Oil 500 ml|
+    |Butterfly Cordial Induction Base Non-Stick Aluminium Fry Pan, 24cm, Black|
+    |Thomas & Friends Train Monkey Palace Set|
+    |New Ray 1:24 Chevrolet Corvette Grand Sport 2010, Red|
+    |Allout-04 Sports Shoes,Running Shoes,Gym Shoes for Men|
+    |FIREBIRD WITH DEVICE Polarized Protected Aviator Black Sunglasses with TAC Material For Men Latest and For Women Stylish Wayfarer Sunglasses|
+    |World’s Greatest Books For Personal Growth & Wealth (Set of 4 Books): Perfect Motivational Gift Set|
     
-    When Check Out 
+    
+    Then I am able to see product description and detail in new tab
+    Then Click on Add to Cart 
+    Then Click on Proceed to Buy the products
+    Then Page Nevigate to Login page
+    Then Enter User Email Id or Phone
+    Then Click on Continue 
+    Then Enter Valid Password
+    Then Click on Login Button
+     
+    
+   
+    
+    
