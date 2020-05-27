@@ -7,7 +7,7 @@ Feature: Search Mutiple Product Fuctionality
   Scenario: Search Mutiple Products
   
     Given I have browser opened and url is navigated
-    Then I search Products
+    When I search Products
      |Products|
      |Mobile|
      |Computer|
@@ -22,7 +22,7 @@ Feature: Search Mutiple Product Fuctionality
      
     And Click on Search
      
-    Then Select product from the "Produts" list and Click on Product
+    And Select product from the "Produts" list and Click on Product
     |Products Name|
     |Apple iPhone XR (64GB) - Blue|
     |Gandiva Desktop Computer (Core 2 Duo CPU / 4GB DDR2 Desktop RAM/No DVD Drive/USB Keyboard and Mouse / 15.6 Inch Monitor/WiFi Facility) with Windows 7 Trail Version Pre Installed (250GB HDD)|
