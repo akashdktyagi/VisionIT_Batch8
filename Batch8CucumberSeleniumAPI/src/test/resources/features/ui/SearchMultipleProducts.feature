@@ -5,6 +5,7 @@ Feature: Search Mutiple Product Fuctionality
 
   @TC0037
   Scenario: Search Mutiple Products
+  
     Given I have browser opened and url is navigated
     Then I search Products
      |Products|
@@ -19,7 +20,8 @@ Feature: Search Mutiple Product Fuctionality
      |gogless for boys|
      |books in hindi best seller|
      
-    And Click on Search 
+    And Click on Search
+     
     Then Select product from the "Produts" list and Click on Product
     |Products Name|
     |Apple iPhone XR (64GB) - Blue|
