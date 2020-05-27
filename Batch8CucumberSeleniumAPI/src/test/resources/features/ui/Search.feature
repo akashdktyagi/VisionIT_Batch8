@@ -24,3 +24,12 @@ Feature: Search functionality
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
 	  
+	  @TC0028
+	  Scenario: Verify Pagination On Product Search Page
+		Given I have browser opened and url is navigated
+		When I search for product as "Dell"
+		And I check when user is on the first page not able to click on the previous button
+		And User is able click to the next button when user has already navigated to any other page or on the first page
+	  And User Should not be able to click on the Next button when the user is on the last page
+	  Then User is able to the previous button when the user has already navigated to any other page or on the last page
+	 
