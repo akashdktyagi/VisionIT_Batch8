@@ -23,4 +23,21 @@ Feature: Search functionality
 		When I search for product as "Dell"
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
-	  
+	
+	 @TC0006
+         Scenario: Validate search product refinements
+             Given I have browser opened and url is navigated
+             When I search for product as "Refrigerator"
+   	     Then Below Search product refinements should displayed
+	         |Amazon Prime| 
+                 |Department|
+		 |Avg. Customer Review| 
+		 |Brand| 
+	         |Shelf Type| 
+		 |Colour| 
+		 |Refrigerator Defrost Type|
+		 |Appliances Family Size| 
+		 |Energy Star Rating| 
+		 |Refrigerator Door Type| 
+		 |Cooling Goods Capacity| 
+       	           
