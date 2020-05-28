@@ -27,7 +27,7 @@ public class CmnPageObjects extends Interact {
 
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
-
+	
 	public CmnPageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
 		this.scn = s;
@@ -81,7 +81,6 @@ public class CmnPageObjects extends Interact {
 		scn.write("Page title matched: " + expectedTitle );
 	}
 	
-
 	public void validateElementPresentInHeaderSection(String text) throws Exception {
 		boolean b=false;
 

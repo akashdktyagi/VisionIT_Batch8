@@ -22,8 +22,8 @@ Feature: Search Mutiple Product Fuctionality
      
     And Click on Search
      
-    And Select product from the "Produts" list and Click on Product
-    |Products Name|
+    Then product list should appear pertaining to the product search as {string}
+    |ProductsName|
     |Apple iPhone XR (64GB) - Blue|
     |Gandiva Desktop Computer (Core 2 Duo CPU / 4GB DDR2 Desktop RAM/No DVD Drive/USB Keyboard and Mouse / 15.6 Inch Monitor/WiFi Facility) with Windows 7 Trail Version Pre Installed (250GB HDD)|
     |DETEL 80 cm (32 Inches) DI32SF HD LED TV with 1 Year Warranty (Black) (2019 Model)|
