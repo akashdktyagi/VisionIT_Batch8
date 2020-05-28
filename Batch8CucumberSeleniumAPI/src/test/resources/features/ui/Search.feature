@@ -23,4 +23,11 @@ Feature: Search functionality
 		When I search for product as "Dell"
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
-	  
+	   
+	  @TC0006
+	  Scenario: User should be able to search for product after entering any keyword in SearchBox and then hover on Sub-Navigation list.
+		Given I have browser opened and url is navigated
+		When In SearchBox search for product as "Dell" 
+		And In Sub Navigation List click on 'Mobile And Accessories'
+		And Click On Brand As 'Apple'.
+		Then Search Should Display Results With Apple Products.
