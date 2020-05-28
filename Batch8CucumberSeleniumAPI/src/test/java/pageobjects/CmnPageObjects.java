@@ -24,9 +24,11 @@ public class CmnPageObjects extends Interact {
 	private By nav_link_prime =  By.id("nav-link-prime");
 	private By nav_link_orders =  By.id("nav-orders");
 	private By nav_link_acount =  By.id("nav-link-accountList");
+	private By add_to_cart = By.xpath("//*[@id='add-to-cart-button']");
 
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
+	
 	
 	public CmnPageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
