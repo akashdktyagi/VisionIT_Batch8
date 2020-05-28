@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -115,6 +117,16 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getProductDescriptionObjects().ValidateProductDescriptionHeader(productClickedTextExpected);
 		testContextUI.getProductDescriptionObjects().switchToDefaultWindowTab();	
 	}
+	@When("I enter product as {string} in search")
+	public void i_enter_product_as_in_search(String productName) {
+	   testContextUI.getCmnPageObjects().SetSearchTextBox(productName);
+	}
+
+	@Then("I am able to see autosuggestion options having keyword {string}")
+	public void i_am_able_to_see_autosuggestion_options_having_keyword(String productName) throws InterruptedException {
+		testContextUI.getCmnPageObjects().AutosuggestionSearchIn(productName);
+	}
+
 	
 	
 	@Before

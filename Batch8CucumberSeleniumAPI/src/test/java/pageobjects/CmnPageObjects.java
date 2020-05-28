@@ -1,9 +1,13 @@
 package pageobjects;
 
+import static org.testng.Assert.fail;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -42,6 +46,19 @@ public class CmnPageObjects extends Interact {
 	public void ClickOnSearchButton() {
 		clickElement(search_button);	
 		logger.info("Clicked on Search Button");
+	}
+	
+	public void AutosuggestionSearchIn(String productName) throws InterruptedException {
+		setElement(search_text_box, Keys.DOWN);
+		
+		String text = getText(search_text_box);
+		System.out.println("Text is "+text);	
+//		setDriver(driver);
+//		Thread.sleep(2000);
+		JavascriptExecutor(search_text_box);
+		setElement(search_text_box,Keys.TAB);
+		clickElement(search_text_box);
+
 	}
 
 	public void ClickOnHamburgerMenuButton() {

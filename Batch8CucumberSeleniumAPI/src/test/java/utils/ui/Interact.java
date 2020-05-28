@@ -1,5 +1,7 @@
 package utils.ui;
 
+import static org.testng.Assert.fail;
+
 import java.io.File;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +9,8 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -57,12 +61,45 @@ public abstract class Interact {
 		return element;
 	}
 	
+	public WebElement setElement(By by, Keys down) {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+		element.sendKeys(down);
+		logger.info("Element is Set with text as: " + down + ". Element Description: " + by.toString());
+		return element;
+	}
+	
 	public String getAttribute(By by, String attName) {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 		String value = element.getAttribute(attName);
 		logger.info("Get Attribute for element: " + by.toString() + " Attribute name: " + attName);
 		return value;
+	}
+	
+	public void JavascriptExecutor(By by) throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		String str = "return document.getElementById('twotabsearchtextbox').value;";
+		String item = (String) js.executeScript(str);
+		System.out.println(item);
+		int i=0;
+		while(!item.contains("dell it")){
+			i++;
+			setElement(by, Keys.DOWN);
+			Thread.sleep(1000);
+			item = (String) js.executeScript(str);
+			System.out.println(item);
+			if(i>11){
+				break;
+			}
+		}
+		if(i>11){
+			System.out.println("Item not found.");
+			fail("Desired item not found.");
+		}else{
+			System.out.println("Desire item found.");
+		}
+//		return value;
 	}
 	
 	public String getText(By by) {
