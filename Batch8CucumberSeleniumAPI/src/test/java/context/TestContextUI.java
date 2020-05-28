@@ -1,6 +1,7 @@
 package context;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import cucumber.api.Scenario;
 import pageobjects.*;
@@ -11,6 +12,7 @@ public class TestContextUI {
 	private CmnPageObjects cmnPageObjects;
 	private SearchPageObjects searchPageObjects;
 	private ProductDescriptionObjects productDescriptionObjects;
+
 	
 	public WebDriver getDriver() {
 		return driver;
@@ -31,11 +33,14 @@ public class TestContextUI {
 	public ProductDescriptionObjects getProductDescriptionObjects() {
 		return productDescriptionObjects;
 	}
-
+	
+	
+		
+	
 	public void initializePageObjectClasses(WebDriver driver,Scenario scn) {
 		cmnPageObjects = new CmnPageObjects(driver,scn);
 		searchPageObjects = new SearchPageObjects(driver,scn);
 		productDescriptionObjects = new ProductDescriptionObjects(driver,scn);
-	}
-	
+		
+}
 }

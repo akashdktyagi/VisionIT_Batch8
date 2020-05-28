@@ -2,6 +2,7 @@ package pageobjects;
 
 import java.util.List;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,8 @@ public class SearchPageObjects extends Interact {
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
+	
+	
 	
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);

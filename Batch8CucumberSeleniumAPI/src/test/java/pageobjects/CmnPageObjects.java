@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,11 +28,16 @@ public class CmnPageObjects extends Interact {
 
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
+	
 
-	public CmnPageObjects(WebDriver driver, Scenario s) {
+	
+         
+     public CmnPageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
 		this.scn = s;
 	}
+
+
 
 	public void SetSearchTextBox(String text) {
 		setElement(search_text_box, text);
@@ -80,7 +86,6 @@ public class CmnPageObjects extends Interact {
 		Assert.assertEquals(true, b);
 		scn.write("Page title matched: " + expectedTitle );
 	}
-	
 
 	public void validateElementPresentInHeaderSection(String text) throws Exception {
 		boolean b=false;
