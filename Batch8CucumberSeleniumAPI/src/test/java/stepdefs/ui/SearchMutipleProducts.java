@@ -1,6 +1,6 @@
 package stepdefs.ui;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class SearchMutipleProducts {
 	Scenario scn;
 	
 	@When("I search Products")
-	public void i_search_Products(ArrayList<String> arraylist1) {
+	public void i_search_Products(List<HashMap<String,String>> list1) {
 		/* |Products|
 	     |Mobile|
 	     |Computer|
@@ -36,36 +36,24 @@ public class SearchMutipleProducts {
 	    // For other transformations you can register a DataTableType.
 	    throw new cucumber.api.PendingException();
 	    */
-		arraylist1.add("Mobile");
-		arraylist1.add("Computer");
-		arraylist1.add("LED TV");
-		arraylist1.add("Pantry");
-		arraylist1.add("Kitchen");
-		arraylist1.add("toy train");
-		arraylist1.add("toy cars");
-		arraylist1.add("sport shoes for mens");
-		arraylist1.add("gogless for boys");
-		arraylist1.add("books in hindi best seller");
+		String products = list1.get(0).get("Products");
+		testContextUI.getCmnPageObjects().SetSearchTextBox(products);
 		
 	}
 
 	@When("Click on Search")
 	public void click_on_Search() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
+		testContextUI.getCmnPageObjects().ClickOnSearchButton();
+		scn.write("Search was sucessfull");
 	}
 
-	@When("Select product from the {string} list and Click on Product")
-	public void select_product_from_the_list_and_Click_on_Product(String string, io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    throw new cucumber.api.PendingException();
-	}
+		@Then("product list should appear pertaining to the product search as {string}")
+		public void product_list_should_appear_pertaining_to_the_product_search_as(List<HashMap<String,String>> list2) {
+			String productName = list2.get(0).get("Products");
+			testContextUI.getSearchPageObjects().ValidateProductList(productName);
+			testContextUI.getSearchPageObjects().ClickOnProductLink();
+		}
+	
 
 	@Then("Click on Add to Cart")
 	public void click_on_Add_to_Cart() {
