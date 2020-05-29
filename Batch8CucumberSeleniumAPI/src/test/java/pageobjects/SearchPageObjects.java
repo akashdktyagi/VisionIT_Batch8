@@ -12,10 +12,15 @@ import utils.ui.Interact;
 
 public class SearchPageObjects extends Interact {
 
-	Scenario scn;
+Scenario scn;
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
+	//TC0028
+		private By Not_clickble_previous = By.xpath("//ul[@class='a-pagination']//li[text()='Previous']");
+		private By Previous= By.xpath("//ul[@class='a-pagination']//a[text()='Previous']");
+		private By next = By.xpath("//ul[@class='a-pagination']//a[text()='Next']");
+		private By Not_clickble_next = By.xpath("//ul[@class='a-pagination']//li[text()='Next']");
 	
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
@@ -28,6 +33,27 @@ public class SearchPageObjects extends Interact {
 		scn.write("Clicked on First Product Link");
 		return list.get(0).getText();
 	}
+	public void Check_Previous_btn() {
+  		validateElementIsDisplayed(Not_clickble_previous);
+  		}
+  		public void click_To_Lastpage() {
+  			
+  			 String nextbtn=getDriver().findElement(next).getAttribute("tagName");
+  			 while(!nextbtn.contains("//li")) {
+  		     clickElement(next);
+  		}
+  			 }
+  		
+  		public void Check_next_btn() {
+  		validateElementIsDisplayed(Not_clickble_next);
+  		}
+  		
+  	    public void Previous_To_Firstpage() {
+  	    	String nextbtn1=getDriver().findElement(Previous).getAttribute("class");
+  			 while(!nextbtn1.contains("a-disabled")) {
+  	         clickElement(Previous);	
+  			 }
+  	    }
 	
 	public String ClickOnProductLink(int productIndex) {
 		List<WebElement> list = getListOfWebElements(product_list_all);
