@@ -27,13 +27,13 @@ Feature: Search functionality
 	 @TC0006
          Scenario: Validate search product refinements
              Given I have browser opened and url is navigated
-             When I search for product as "Refrigerator"
+             When I search for product as a "Refrigerator"
    	     Then Below Search product refinements should displayed
 	         |Amazon Prime| 
                  |Department|
 		 |Avg. Customer Review| 
 		 |Brand| 
-	         |Shelf Type| 
+	          |Pay On Delivery| 
 		 |Colour| 
 		 |Refrigerator Defrost Type|
 		 |Appliances Family Size| 
