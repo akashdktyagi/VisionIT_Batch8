@@ -87,14 +87,12 @@ public abstract class Interact {
 	}
 	
 	public void switchToSecondWindowTab() {
-		String [] handles = (String[]) driver.getWindowHandles().toArray();
-		driver.switchTo().window(handles[1]);
+		driver.switchTo().window((String) driver.getWindowHandles().toArray()[1]);
 		logger.info("Browser Switched to second window tab.");
 	}
 	
 	public void switchToDefaultWindowTab() {
-		String [] handles = (String[]) driver.getWindowHandles().toArray();
-		driver.switchTo().window(handles[0]);
+		driver.switchTo().window((String) driver.getWindowHandles().toArray()[0]);
 		logger.info("Browser Switched to parent window tab.");
 	}
 	
