@@ -117,28 +117,6 @@ public class SearchStepDefs extends TestBase{
 	}
 	
 	
-	@When("I click on first product")
-	public void i_click_on_first_product()
-	{
-	   
-	}
-
-	@When("I clicked on Add to Cart Button")
-	public void i_clicked_on_Add_to_Cart_Button() 
-	{
-
-
-	}
-
-	@Then("I am able to see the cart value gets updated")
-	public void i_am_able_to_see_the_cart_value_gets_updated() 
-	{
-	    
-	}
-
-
-	
-	
 	@Before
 	public void SetUp(Scenario s) {
 		this.scn = s;

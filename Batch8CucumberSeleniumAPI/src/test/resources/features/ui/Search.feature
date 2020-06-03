@@ -24,13 +24,3 @@ Feature: Search functionality
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
 	  
-	  
-	  
-		@TC0038
-		Scenario: Check The Updated Cart Value After Adding Products
-		Given I have browser opened and url is navigated
-		When I search for product as "Samsung" 
-		And I click on first product
-		And I clicked on Add to Cart Button
-		Then I am able to see the cart value gets updated
-		
