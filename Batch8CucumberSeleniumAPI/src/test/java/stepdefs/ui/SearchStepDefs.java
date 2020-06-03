@@ -117,8 +117,8 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getProductDescriptionObjects().ValidateProductDescriptionHeader(productClickedTextExpected);
 		testContextUI.getProductDescriptionObjects().switchToDefaultWindowTab();	
 	}
-	@When("I enter product as {string} in search")
-	public void i_enter_product_as_in_search(String productName) {
+	@When("I entered product as {string} in search")
+	public void i_entered_product_as_in_search(String productName) {
 	   testContextUI.getCmnPageObjects().SetSearchTextBox(productName);
 	}
 

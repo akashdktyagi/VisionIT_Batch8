@@ -77,31 +77,6 @@ public abstract class Interact {
 		return value;
 	}
 	
-	public void JavascriptExecutor(By by) throws InterruptedException {
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		String str = "return document.getElementById('twotabsearchtextbox').value;";
-		String item = (String) js.executeScript(str);
-		System.out.println(item);
-		int i=0;
-		while(!item.contains("dell it")){
-			i++;
-			setElement(by, Keys.DOWN);
-			Thread.sleep(1000);
-			item = (String) js.executeScript(str);
-			System.out.println(item);
-			if(i>11){
-				break;
-			}
-		}
-		if(i>11){
-			System.out.println("Item not found.");
-			fail("Desired item not found.");
-		}else{
-			System.out.println("Desire item found.");
-		}
-//		return value;
-	}
-	
 	public String getText(By by) {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));

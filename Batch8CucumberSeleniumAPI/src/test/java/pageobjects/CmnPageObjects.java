@@ -51,11 +51,19 @@ public class CmnPageObjects extends Interact {
 	public void AutosuggestionSearchIn(String productName) throws InterruptedException {
 		setElement(search_text_box, Keys.DOWN);
 		
-		String text = getText(search_text_box);
-		System.out.println("Text is "+text);	
-//		setDriver(driver);
-//		Thread.sleep(2000);
-		JavascriptExecutor(search_text_box);
+		String text = getAttribute(search_text_box,"value");
+		System.out.println("Text is "+ text);	
+		for(int i = 0; i < 11; i++) {
+			setElement(search_text_box, Keys.DOWN);
+			Thread.sleep(1500);
+			String  item = getAttribute(search_text_box,"value");
+			Thread.sleep(1000);
+			if(item.contains(productName)) {
+				System.out.println(item);
+			}else {
+				System.out.println("Item Name does not match with the value entered in the text box!");
+			}
+		}
 		setElement(search_text_box,Keys.TAB);
 		clickElement(search_text_box);
 
