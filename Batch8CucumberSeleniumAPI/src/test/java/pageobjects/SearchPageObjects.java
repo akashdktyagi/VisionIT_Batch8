@@ -157,6 +157,8 @@ public class SearchPageObjects extends Interact {
 		}
 
 	}
+	
+String str ="abc";
 
 
 }
