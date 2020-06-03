@@ -5,7 +5,7 @@ Feature: Search functionality
 	@TC0001
   Scenario: Search a product 
     Given I have browser opened and url is navigated
-    When I search for product as "Dell"
+    And I search for product as "Dell"
     Then product list should appear pertaining to the product search as "Dell"
 
   @TC0004
@@ -26,11 +26,4 @@ Feature: Search functionality
 	  
 	  
 	  
-		@TC0038
-		Scenario: Check The Updated Cart Value After Adding Products
-		Given I have browser opened and url is navigated
-		When I search for product as "Samsung" 
-		And I click on first product
-		And I clicked on Add to Cart Button
-		Then I am able to see the cart value gets updated
-		
+	

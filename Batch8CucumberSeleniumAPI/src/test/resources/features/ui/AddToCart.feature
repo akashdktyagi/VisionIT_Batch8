@@ -1,4 +1,3 @@
-
 @ui @AddToCart
 Feature: Add to cart functionality
    
@@ -24,6 +23,15 @@ Feature: Add to cart functionality
       | Dell   |   
       | Mobile |  	
       
+      
+  @TC0038
+  Scenario: Validate the cart value in the header section is updated after adding product
+	 Given I have browser opened and url is navigated
+  	And I search for product as "Samsung"
+  	And I get a text for cart
+   	And  I click on any product in the Search result
+   When   I click on Add to Cart button
+   Then I am able to see the cart value gets updated in the header section
    
       
 

@@ -17,7 +17,7 @@ import cucumber.api.junit.Cucumber;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 		},
 		strict=false,
-		dryRun=true
+		dryRun=false
 
 		)
 public class RunTempUI {
