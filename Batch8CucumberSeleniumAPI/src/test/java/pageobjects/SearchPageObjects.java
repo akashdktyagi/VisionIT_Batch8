@@ -16,10 +16,10 @@ public class SearchPageObjects extends Interact {
 
 	private static final Logger logger = LogManager.getLogger(SearchPageObjects.class);
 	Scenario scn;
-	
+
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
-	
+
 	//Product Refinements locators
 	private By product_refinement_list=By.xpath("//span[@class='a-size-base a-color-base a-text-bold']");
 	private By amazon_prime=By.xpath("//span[contains(text(),'Amazon Prime')]");
@@ -33,26 +33,26 @@ public class SearchPageObjects extends Interact {
 	private By energy_star_rating=By.xpath("//span[contains(text(),'Energy Star Rating')]");
 	private By refrigerator_door_type =By.xpath("//span[contains(text(),'Refrigerator Door Type')]");
 	private By cooling_goods_capacity=By.xpath("//span[contains(text(),'Cooling Goods Capacity')]");
-	
+
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
 		this.scn = s;
 	}
-	
+
 	public String ClickOnProductLink() {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(0));
 		scn.write("Clicked on First Product Link");
 		return list.get(0).getText();
 	}
-	
+
 	public String ClickOnProductLink(int productIndex) {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(productIndex));
 		scn.write("Clicked on Product id: " + productIndex + " Product Link");
 		return list.get(productIndex).getText();
 	}
-	
+
 	public String ClickOnProductLink(String productTextContains) {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		boolean flag=false;
@@ -65,20 +65,20 @@ public class SearchPageObjects extends Interact {
 				break;
 			}
 		}
-		
+
 		if (flag) {
 			scn.write("Clicked on Product containing text as: " + productTextContains + "");
 		}else {
 			scn.write("Unable to click on Product containing text as: " + productTextContains + " No product found with mentioned text");
 			Assert.fail("Unable to click on Product containing text as: " + productTextContains + " No product found with mentioned text");
 		}
-		
+
 		return list.get(counter).getText();
 
 	}
-	
+
 	public void ValidateProductList(String productName) {
-	
+
 		List<WebElement> list_products = getListOfWebElements(product_list);
 		for (int i=0;i<list_products.size();i++) {
 			if (list_products.get(i).getText().toLowerCase().contains(productName.toLowerCase())) {
@@ -87,10 +87,10 @@ public class SearchPageObjects extends Interact {
 				Assert.fail("Product not correctly displayed in the search result. Product at index: " + (i+1));
 			}
 		}
-		
+
 	}
-	
-       //Product Refinements methods
+
+	//Product Refinements methods
 	public void validateProductRefinementList(String text) throws Exception {
 		boolean b=false;
 
@@ -129,7 +129,7 @@ public class SearchPageObjects extends Interact {
 		case "cooling goods capacity":
 			b = validateElementIsDisplayed(cooling_goods_capacity);
 			break;
-					
+
 		default:
 			logger.fatal("Product refinement Description is not present in the case. Please add  description first.");
 			scn.write("Product refinement Description  is not present in the case. Please add  description first.");
@@ -145,18 +145,20 @@ public class SearchPageObjects extends Interact {
 		}
 	}
 
-	
 
-		public void DisplayedProductRefinementList()
+	public void DisplayedProductRefinementList()
+	{
+		List<WebElement> refinements = getListOfWebElements(product_refinement_list);
+
+		for(int i=0;i<refinements.size();i++)
 		{
-			List<WebElement> refinements = getListOfWebElements(product_refinement_list);
-
-			for(int i=0;i<refinements.size();i++)
-			{
-				String refinementsList=refinements.get(i).getText();
-				scn.write(refinementsList);
-			}
-
+			String refinementsList=refinements.get(i).getText();
+			scn.write(refinementsList);
 		}
-	
+
+	}
+
+
 }
+
+
