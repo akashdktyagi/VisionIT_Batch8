@@ -57,7 +57,6 @@ public class SearchPageObjects extends Interact {
 		}
 		
 		return list.get(counter).getText();
-
 	}
 	
 	public void ValidateProductList(String productName) {

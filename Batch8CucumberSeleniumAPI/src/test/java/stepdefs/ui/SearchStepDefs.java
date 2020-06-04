@@ -75,8 +75,7 @@ public class SearchStepDefs extends TestBase{
 	public void i_search_for_product_as(String product) {
 		testContextUI.getCmnPageObjects().SetSearchTextBox(product);
 		testContextUI.getCmnPageObjects().ClickOnSearchButton();
-		scn.write("Search was sucessfull");
-		
+		scn.write("Search was sucessfull");	
 	}
 
 	@Then("product list should appear pertaining to the product search as {string}")
@@ -125,7 +124,6 @@ public class SearchStepDefs extends TestBase{
 	public void SetUp(Scenario s) {
 		this.scn = s;
 	}
-
 	
 	@After
 	public void CleanUp(Scenario s) {
