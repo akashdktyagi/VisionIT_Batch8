@@ -16,7 +16,7 @@ public class SearchPageObjects extends Interact {
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
-	
+	private By result_invalid_product=By.xpath("//span[text()='Try checking your spelling or use more general terms']");
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
 		this.scn = s;
@@ -71,5 +71,17 @@ public class SearchPageObjects extends Interact {
 			}
 		}
 		
+	}
+	public void ValidateInvalidateProductMessage(){
+		String expected="Try Checking Your Spelling Or Use More General Term.";
+		String actual=getText(result_invalid_product);
+		Assert.assertEquals(expected, actual);
+		scn.write("User Navigate to Search Window");
+		if(getText(product_list).toLowerCase().contains("1 item")){
+			Assert.assertTrue(true);
+			scn.write("Product is correctly displayed in serach result");
+		}else{
+			Assert.fail("Product is not correctly displayed in search result");
+		}
 	}
 }

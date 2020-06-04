@@ -84,6 +84,11 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getSearchPageObjects().ValidateProductList(productName);
 	}
 	
+	@Then("Search result should displayed {string}")
+	public void search_result_should_displayed_Try_Checking_Your_Spelling_Or_Use_More_General_Term(String productName) {
+		testContextUI.getSearchPageObjects().ValidateInvalidateProductMessage();
+	}
+	
 	@When("I click on hamburger menu")
 	public void i_click_on_hamburger_menu() {
 		testContextUI.getCmnPageObjects().ClickOnHamburgerMenuButton();
@@ -115,9 +120,6 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getProductDescriptionObjects().ValidateProductDescriptionHeader(productClickedTextExpected);
 		testContextUI.getProductDescriptionObjects().switchToDefaultWindowTab();	
 	}
-	
-	
-
 	
 	@Before
 	public void SetUp(Scenario s) {
