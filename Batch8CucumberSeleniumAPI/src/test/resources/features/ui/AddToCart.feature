@@ -12,7 +12,7 @@ Feature: Add to cart functionality
     Then I validate the Subtotal as 1 item 
     
 
- @TC0033
+ @TC0040
  Scenario Outline: User should be able to Remove the items from Add To Cart list
     Given I have browser opened and url is navigated
     And I search for product as <name> and add it to cart

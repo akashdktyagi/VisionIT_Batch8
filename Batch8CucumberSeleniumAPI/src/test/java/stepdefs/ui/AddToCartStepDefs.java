@@ -18,41 +18,41 @@ public class AddToCartStepDefs {
 	public AddToCartStepDefs(TestContextUI testContextUI) {
 		this.testContextUI = testContextUI;
 	}
-	
+
 	@Given("I search the products given below and add them to cart")
 	public void i_search_the_products_given_below_and_add_them_to_cart(List<String> list) throws Exception {
-	   
+
 		for(int i=0;i<list.size();i++) {
-	
+
 			//search and click on search btn
 			testContextUI.getCmnPageObjects().SetSearchTextBox(list.get(i));
 			testContextUI.getCmnPageObjects().ClickOnSearchButton();
-			
-		    //select first product in the list displayed
-			 i_click_on_first_product_in_the_Search_Result();
-			
+
+			//select first product in the list displayed
+			i_click_on_first_product_in_the_Search_Result();
+
 			//add product to the cart
-			 i_click_on_Add_To_Cart_button();
-			 
-			 testContextUI.getDriver().close();
-		   	 testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[0]).navigate().refresh();
-			 testContextUI.getCmnPageObjects().ClearSearchTextBox();
+			i_click_on_Add_To_Cart_button();
+
+			testContextUI.getDriver().close();
+			testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[0]).navigate().refresh();
+			testContextUI.getCmnPageObjects().ClearSearchTextBox();
 
 		}	
 	}
-		
+
 	@And("I click on first product in the Search Result")
 	public void i_click_on_first_product_in_the_Search_Result() {
-		 testContextUI.getSearchPageObjects().ClickOnProductLink();
+		testContextUI.getSearchPageObjects().ClickOnProductLink();
 	}
-	
+
 	@And("I click on Add To Cart button")
 	public void i_click_on_Add_To_Cart_button() throws Exception {
 		testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[1]);
-   		testContextUI.getAddToCartPageObjects().ClickOnAddToCartBtn();
-   		Thread.sleep(15000);
+		testContextUI.getAddToCartPageObjects().ClickOnAddToCartBtn();
+		Thread.sleep(15000);
 	}
-	
+
 	@When("I click on the Cart button present in the Header section")
 	public void i_click_on_the_Cart_button_present_in_the_Header_section() {
 		testContextUI.getAddToCartPageObjects().ClickOnCartBtn();
@@ -60,12 +60,48 @@ public class AddToCartStepDefs {
 
 	@When("I click on Delete button for {string} Product")
 	public void i_click_on_Delete_button_for_Product(String proName) {
-		testContextUI.getAddToCartPageObjects().ClickOnDeleteBtnForDell();
+		testContextUI.getAddToCartPageObjects().DeleteProductLink(0);
 	}
 
 	@Then("I validate the Subtotal as {int} item")
 	public void i_validate_the_Subtotal_as_item(Integer int1) {
 		testContextUI.getAddToCartPageObjects().ValidateSubTotalAfterDeletion();
+	}
+
+	//***********************for TC0033***********************
+
+	@Given("I search for product as Dell and add it to cart")
+	public void i_search_for_product_as_Dell_and_add_it_to_cart() throws Exception {
+		testContextUI.getCmnPageObjects().SetSearchTextBox("Dell");
+		testContextUI.getCmnPageObjects().ClickOnSearchButton();
+
+		i_click_on_first_product_in_the_Search_Result();
+		i_click_on_Add_To_Cart_button();
+
+		testContextUI.getDriver().close();
+		testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[0]).navigate().refresh();
+	}
+
+	@Given("I search for product as Earphones and add it to cart")
+	public void i_search_for_product_as_Mobile_and_add_it_to_cart() throws Exception {
+		testContextUI.getCmnPageObjects().SetSearchTextBox("Earphones");
+		testContextUI.getCmnPageObjects().ClickOnSearchButton();
+
+		i_click_on_first_product_in_the_Search_Result();
+		i_click_on_Add_To_Cart_button();
+
+		testContextUI.getDriver().close();
+		testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[0]).navigate().refresh();
+	}
+
+	@When("I click on Delete button")
+	public void i_click_on_Delete_button() {
+		testContextUI.getAddToCartPageObjects().DeleteProductLink(0);
+	}
+
+	@Then("I get message as {string}")
+	public void i_get_message_as(String msg) {
+		testContextUI.getAddToCartPageObjects().ValidateCartIsEmpty(msg);
 	}
 
 }
