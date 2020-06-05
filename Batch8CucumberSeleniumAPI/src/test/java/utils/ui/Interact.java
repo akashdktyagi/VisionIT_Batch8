@@ -57,6 +57,14 @@ public abstract class Interact {
 		return element;
 	}
 	
+	public WebElement clearElementText(By by) {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+		element.clear();
+		logger.info("Element Text is Cleared");
+		return element;
+	}
+	
 	public String getAttribute(By by, String attName) {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
