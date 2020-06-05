@@ -25,7 +25,7 @@ public class CmnPageObjects extends Interact {
 	private By nav_link_orders =  By.id("nav-orders");
 	private By nav_link_acount =  By.id("nav-link-accountList");
 	private By add_to_cart = By.xpath("//*[@id='add-to-cart-button']");
-
+	private By proceed_to_buy_products = By.xpath("//*[@id='hlb-ptc-btn-native']");
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
 	
@@ -66,6 +66,15 @@ public class CmnPageObjects extends Interact {
 		logger.info("Clicked on Hamburger Menu SubCategory link: " + linkText);
 	}
 
+	public void ClickOnAddToCart() {
+		clickElement(add_to_cart);	
+		logger.info("Clicked on Add to Cart Button");
+	}
+	
+	public void proceedToBuyProduts() {
+		clickElement(proceed_to_buy_products);	
+		logger.info("Clicked on Proceed to Buy Products");
+	}
 	public void validateHamBurgerMenuIsDisplayed() {
 		boolean b = validateElementIsDisplayed(hamburger_menu_link);
 		Assert.assertEquals(true, b);
@@ -82,6 +91,7 @@ public class CmnPageObjects extends Interact {
 		Assert.assertEquals(true, b);
 		scn.write("Page title matched: " + expectedTitle );
 	}
+	
 	
 	public void validateElementPresentInHeaderSection(String text) throws Exception {
 		boolean b=false;
