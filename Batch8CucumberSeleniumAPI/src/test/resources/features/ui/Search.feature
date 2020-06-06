@@ -28,6 +28,6 @@ Feature: Search functionality
 	 Scenario:When user enter combination of character  and number in search test box it should say Try Checking Your Spelling.
 		Given I have browser opened and url is navigated
 		When I search for product as "Del123"
-		Then Search result should displayed "Try Checking Your Spelling Or Use More General Term." 
+		Then Search result should displayed "Try Checking Your Spelling Or Use More General Term". 
 
 		
