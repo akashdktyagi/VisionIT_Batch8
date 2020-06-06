@@ -32,4 +32,5 @@ Feature: Search Mutiple Product Fuctionality
     Then Page is nevigating to new window 
     Then I Validate product description and detail
     Then I Click on Add to Cart
+    Then I Click on cart and Processed to Buy Products
     
