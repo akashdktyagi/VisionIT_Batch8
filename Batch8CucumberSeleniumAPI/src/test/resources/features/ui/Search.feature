@@ -24,3 +24,10 @@ Feature: Search functionality
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
 	  
+	@TC0010 
+	 Scenario:When user enter combination of character  and number in search test box it should say Try Checking Your Spelling.
+		Given I have browser opened and url is navigated
+		When I search for product as "Del123"
+		Then Search result should displayed "Try Checking Your Spelling Or Use More General Term". 
+
+		

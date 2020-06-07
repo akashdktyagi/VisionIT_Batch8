@@ -15,7 +15,6 @@ import utils.ui.Interact;
 public class CmnPageObjects extends Interact {
 	private static final Logger logger = LogManager.getLogger(CmnPageObjects.class);
 	Scenario scn;
-
 	private By search_text_box = By.id("twotabsearchtextbox");
 	private By search_button = By.xpath("//input[@value='Go']");
 	private By hamburger_menu_link =  By.id("nav-hamburger-menu");
@@ -24,10 +23,9 @@ public class CmnPageObjects extends Interact {
 	private By nav_link_prime =  By.id("nav-link-prime");
 	private By nav_link_orders =  By.id("nav-orders");
 	private By nav_link_acount =  By.id("nav-link-accountList");
-
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
-
+	
 	public CmnPageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
 		this.scn = s;
@@ -43,7 +41,7 @@ public class CmnPageObjects extends Interact {
 		clickElement(search_button);	
 		logger.info("Clicked on Search Button");
 	}
-
+	
 	public void ClickOnHamburgerMenuButton() {
 		clickElement(hamburger_menu_link);
 		scn.write("Clicked on Hamburger Menu Link");
