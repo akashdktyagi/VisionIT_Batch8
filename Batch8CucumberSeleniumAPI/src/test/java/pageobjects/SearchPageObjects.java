@@ -31,17 +31,17 @@ public class SearchPageObjects extends Interact {
 		scn.write("Clicked on First Product Link");
 		return list.get(0).getText();
 	}
-	public boolean CheckPreviousBtn() {
-		return validateElementIsDisplayed(PreviousBtn);
+	public void CheckPreviousBtn() {
+		 validateElementIsDisplayed(PreviousBtn);
 	}
 	public void ClickOnlastPageLink() {
-		while(CheckNextBtn())
+		while(validateElementIsDisplayed(PreviousBtn))
 		{
 			clickElement(ClickNextBtn);
 		}
 	}
-	public boolean CheckNextBtn() {
-		return validateElementIsDisplayed(NextBtn);
+	public void CheckNextBtn() {
+		 validateElementIsDisplayed(NextBtn);
 	}
 	public void ClickOnFirstPageLink() {
 		String nextbtn1=getDriver().findElement(ClickPreviousBtn).getAttribute("class");
