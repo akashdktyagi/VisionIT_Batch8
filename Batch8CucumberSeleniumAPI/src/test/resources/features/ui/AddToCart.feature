@@ -1,3 +1,4 @@
+
 @ui @AddToCart
 Feature: Add to cart functionality
    
@@ -33,5 +34,4 @@ Feature: Add to cart functionality
    When   I click on Add to Cart button
    Then I am able to see the cart value gets updated in the header section
    
-      
 
