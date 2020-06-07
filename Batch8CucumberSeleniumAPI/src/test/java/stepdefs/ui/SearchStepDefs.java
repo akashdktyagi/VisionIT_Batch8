@@ -1,34 +1,19 @@
 package stepdefs.ui;
-
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import context.TestBase;
 import context.TestContextUI;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pageobjects.CmnPageObjects;
-import pageobjects.SearchPageObjects;
 import utils.manager.driver.factory.DriverFactory;
 import utils.manager.driver.factory.DriverManager;
-import utils.manager.driver.singleton.WebDriverManagerSingleton;
-import utils.manager.driver.staticmethod.WebDriverManagerSimple;
 
 public class SearchStepDefs extends TestBase{
-
 	TestContextUI testContextUI;
 	Scenario scn;
 	String productClickedTextExpected;
@@ -41,7 +26,7 @@ public class SearchStepDefs extends TestBase{
 	public void i_have_browser_opened_and_url_is_navigated() throws Exception {	
 
 		/* Various ways of invoking Web Driver*/
-		/* Mehtod - 1*/
+		/* Method - 1*/
 		DriverManager driverManager = DriverFactory.getDriverManager("chrome");
 		WebDriver driver = driverManager.getDriver();
 		driverManager.maximizeBrowser();
@@ -54,7 +39,6 @@ public class SearchStepDefs extends TestBase{
 		 *driver.manage().window().maximize();
 		 *driver.get(serverUI);
 		 */
-
 
 		/* OR Mehtod - 3*/
 		/*
@@ -82,10 +66,10 @@ public class SearchStepDefs extends TestBase{
 	public void product_list_should_appear_pertaining_to_the_product_search_as(String productName) {
 		testContextUI.getSearchPageObjects().ValidateProductList(productName);
 	}
-
+	
 	@Then("Search result should displayed {string}")
 	public void search_result_should_displayed_Try_Checking_Your_Spelling_Or_Use_More_General_Term(String productName) {
-		testContextUI.getSearchPageObjects().ValidateInvalidateProductMessage();
+		testContextUI.getSearchPageObjects().ValidateInvalidateProductMessage(productName);
 	}
 
 	@When("I click on hamburger menu")

@@ -68,10 +68,9 @@ public class SearchPageObjects extends Interact {
 			}
 		}
 	}
-	public void ValidateInvalidateProductMessage(){
-		String expected="Try Checking Your Spelling Or Use More General Term.";
+	public void ValidateInvalidateProductMessage(String errMessage){
 		String actual=getText(result_invalid_product);
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals(errMessage, actual);
 		scn.write("Error message is displayed");
 	}
 }
