@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 
 		features="classpath:features/ui/SearchMultipleProducts.feature",
 		glue="stepdefs.ui",
-		tags="@TC0037",
+		tags="@TC008",
 		plugin = {"pretty",
 				"html:target/html/",
 				"json:target/json/file.json",

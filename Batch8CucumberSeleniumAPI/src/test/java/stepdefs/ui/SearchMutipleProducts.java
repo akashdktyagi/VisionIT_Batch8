@@ -16,13 +16,19 @@ public class SearchMutipleProducts extends Interact {
 	TestContextUI testContextUI;
 	Scenario scn;
 
-	@When("I search Product and click on Search Button")
-	public void i_search_Product_and_click_on_Search_Button(List<String> list) {
+	@When("I search for and add single product <Product Name> of each category as below")
+	public void i_search_for_and_add_single_product_Product_Name_of_each_category_as_below(List<String> list){
 		try {
 			for (int i = 0; i < list.size(); i++) {
 				testContextUI.getCmnPageObjects().SetSearchTextBox(list.get(i));
 				testContextUI.getCmnPageObjects().ClickOnSearchButton();
-
+				testContextUI.getSearchPageObjects().ClickOnProductLink();
+				testContextUI.getDriver().switchTo().window((String) testContextUI.getDriver().getWindowHandles().toArray()[1]);
+				testContextUI.getCmnPageObjects().ClickOnAddToCart();
+				testContextUI.getDriver().close();
+				testContextUI.getDriver().switchTo().window((String) testContextUI.getDriver().getWindowHandles().toArray()[0])
+						.navigate().refresh();
+				testContextUI.getCmnPageObjects().CleartextBox();
 			}
 		} catch (NullPointerException e) {
 			System.out.println("NullPointerException thrown!");
@@ -30,35 +36,11 @@ public class SearchMutipleProducts extends Interact {
 
 	}
 
-	@And("I Select product from the list and click on it")
-	public void i_Select_product_from_the_list_and_click_on_it(List<String> list1) {
-
-		testContextUI.getSearchPageObjects().ClickOnProductLink();
-	}
-
-	@Then("Page is nevigating to new window")
-	public void page_is_nevigating_to_new_window() {
-		testContextUI.getDriver().switchTo().window((String) testContextUI.getDriver().getWindowHandles().toArray()[1]);
-	}
-
-	@Then("I Validate product description and detail")
-	public void i_Validate_product_description_and_detail() {
-
-	}
-
-	@Then("I Click on Add to Cart")
-	public void i_Click_on_Add_to_Cart() {
-		testContextUI.getCmnPageObjects().ClickOnAddToCart();
-		testContextUI.getDriver().close();
-		testContextUI.getDriver().switchTo().window((String) testContextUI.getDriver().getWindowHandles().toArray()[0])
-				.navigate().refresh();
-		testContextUI.getCmnPageObjects().CleartextBox();
-	}
-
-	@Then("I Click on cart and Processed to Buy Products")
-	public void i_Click_on_cart_and_Processed_to_Buy_Products() {
+	@Then("All the products should be added in the cart")
+	public void all_the_products_should_be_added_in_the_cart() {
 		testContextUI.getCmnPageObjects().ClickOnCart();
 		testContextUI.getCmnPageObjects().proceedToBuyProduts();
 	}
 
 }
+
