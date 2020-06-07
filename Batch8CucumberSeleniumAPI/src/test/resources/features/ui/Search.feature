@@ -5,7 +5,7 @@ Feature: Search functionality
 	@TC0001
   Scenario: Search a product 
     Given I have browser opened and url is navigated
-    When I search for product as "Dell"
+    And I search for product as "Dell"
     Then product list should appear pertaining to the product search as "Dell"
 
   @TC0004
@@ -23,4 +23,4 @@ Feature: Search functionality
 		When I search for product as "Dell"
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
-	  
+

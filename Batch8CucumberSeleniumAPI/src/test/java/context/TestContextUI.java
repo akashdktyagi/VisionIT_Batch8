@@ -11,6 +11,7 @@ public class TestContextUI {
 	private CmnPageObjects cmnPageObjects;
 	private SearchPageObjects searchPageObjects;
 	private ProductDescriptionObjects productDescriptionObjects;
+	private AddToCartObjects addToCartObjects;
 	
 	public WebDriver getDriver() {
 		return driver;
@@ -26,16 +27,21 @@ public class TestContextUI {
 
 	public SearchPageObjects getSearchPageObjects() {
 		return searchPageObjects;
-	}
+	}	
 	
 	public ProductDescriptionObjects getProductDescriptionObjects() {
 		return productDescriptionObjects;
+	}
+	
+	public AddToCartObjects geAddToCartObjects(){
+		return addToCartObjects;
 	}
 
 	public void initializePageObjectClasses(WebDriver driver,Scenario scn) {
 		cmnPageObjects = new CmnPageObjects(driver,scn);
 		searchPageObjects = new SearchPageObjects(driver,scn);
 		productDescriptionObjects = new ProductDescriptionObjects(driver,scn);
+		addToCartObjects = new AddToCartObjects(driver, scn);
 	}
 	
 }

@@ -17,6 +17,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -32,6 +33,7 @@ public class SearchStepDefs extends TestBase{
 	TestContextUI testContextUI;
 	Scenario scn;
 	String productClickedTextExpected;
+	
 	
 	public SearchStepDefs(TestContextUI testContextUI) {
 		this.testContextUI = testContextUI;
@@ -71,14 +73,16 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.initializePageObjectClasses(driver, scn);
 	}
 
-	@When("I search for product as {string}")
+	@And ("I search for product as {string}")
 	public void i_search_for_product_as(String product) {
 		testContextUI.getCmnPageObjects().SetSearchTextBox(product);
 		testContextUI.getCmnPageObjects().ClickOnSearchButton();
 		scn.write("Search was sucessfull");
 		
 	}
-
+	
+	
+	
 	@Then("product list should appear pertaining to the product search as {string}")
 	public void product_list_should_appear_pertaining_to_the_product_search_as(String productName) {
 		testContextUI.getSearchPageObjects().ValidateProductList(productName);
@@ -105,18 +109,18 @@ public class SearchStepDefs extends TestBase{
 	}
 	
 	@When("I click on any product in the Search Result")
-	public void i_click_on_any_product_in_the_Search_Result() {
+	public void i_click_on_any_product_in_the_Search_Result()
+	{
 		productClickedTextExpected = testContextUI.getSearchPageObjects().ClickOnProductLink();
 	}
-
+	
 	@Then("I am able to see product description and detail in new tab")
 	public void i_am_able_to_see_product_description_and_detail_in_new_tab() {
 		testContextUI.getProductDescriptionObjects().switchToSecondWindowTab();
 		testContextUI.getProductDescriptionObjects().ValidateProductDescriptionHeader(productClickedTextExpected);
 		testContextUI.getProductDescriptionObjects().switchToDefaultWindowTab();	
 	}
-	
-	
+
 	@Before
 	public void SetUp(Scenario s) {
 		this.scn = s;

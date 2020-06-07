@@ -8,6 +8,7 @@ public class ChromeManager extends DriverManager{
 	@Override
 	protected void initDriver() {
 		driver = new ChromeDriver();
+		setImplicitWaitTimeOut(4000);
 	}
 
 }
