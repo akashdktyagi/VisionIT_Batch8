@@ -1,5 +1,6 @@
 package stepdefs.ui;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -116,6 +117,28 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getProductDescriptionObjects().switchToDefaultWindowTab();	
 	}
 	
+	//Product Refinements
+	@When("I search for product as a {string}")
+	public void i_search_for_product_as_a(String productName) {
+		testContextUI.getCmnPageObjects().SetSearchTextBox(productName);
+		testContextUI.getCmnPageObjects().ClickOnSearchButton();
+	}
+
+	@Then("Below Search product refinements should displayed")
+	public void below_Search_product_refinements_should_displayed(List<String> refinementlist ) {
+
+		for(int i=0;i<refinementlist.size();i++)
+		{
+			try
+			{
+               testContextUI.getSearchPageObjects().validateProductRefinementList(refinementlist.get(i));
+			}
+			catch(Exception e)
+			{
+				scn.write("Exception thrown: "+e.getMessage());
+			}
+		}
+	}
 	
 	@Before
 	public void SetUp(Scenario s) {
