@@ -19,20 +19,12 @@ public class SearchPageObjects extends Interact {
 
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
-
 	//Product Refinements locators
-	private By product_refinement_list=By.xpath("//span[@class='a-size-base a-color-base a-text-bold']");
-	private By amazon_prime=By.xpath("//span[contains(text(),'Amazon Prime')]");
-	private By department=By.xpath("//span[contains(text(),'Department')]");
-	private By avg_customer_review=By.xpath("//span[contains(text(),'Avg. Customer Review')]");
-	private By brand=By.xpath("//span[contains(text(),'Brand')]");
-	private By pay_on_delivery=By.xpath("//span[contains(text(),'Pay On Delivery')]");
-	private By colour=By.xpath("//span[contains(text(),'Colour')]");
-	private By refrigerator_defrost_type=By.xpath("//span[contains(text(),'Refrigerator Defrost Type')]");
-	private By appliances_family_size=By.xpath("//span[contains(text(),'Appliances Family Size')]");
-	private By energy_star_rating=By.xpath("//span[contains(text(),'Energy Star Rating')]");
-	private By refrigerator_door_type =By.xpath("//span[contains(text(),'Refrigerator Door Type')]");
-	private By cooling_goods_capacity=By.xpath("//span[contains(text(),'Cooling Goods Capacity')]");
+	private By amazon_prime=By.id("primeRefinements"); 
+	private By department=By.id("departments");
+	private By avg_customer_review=By.id("reviewsRefinements");
+	private By brand=By.id("brandsRefinements");
+	private By filters=By.id("filters");
 
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
@@ -108,26 +100,8 @@ public class SearchPageObjects extends Interact {
 		case "brand":
 			b = validateElementIsDisplayed(brand);
 			break;
-		case "pay on delivery":
-			b = validateElementIsDisplayed(pay_on_delivery); //changes
-			break;
-		case "colour":
-			b = validateElementIsDisplayed(colour);
-			break;
-		case "refrigerator defrost type":
-			b = validateElementIsDisplayed(refrigerator_defrost_type);
-			break;
-		case "appliances family size":
-			b = validateElementIsDisplayed(appliances_family_size);
-			break;
-		case "refrigerator door type":
-			b = validateElementIsDisplayed(refrigerator_door_type);
-			break;
-		case "energy star rating":
-			b = validateElementIsDisplayed(energy_star_rating);
-			break;
-		case "cooling goods capacity":
-			b = validateElementIsDisplayed(cooling_goods_capacity);
+		case "filters":
+			b = validateElementIsDisplayed(filters); //changes
 			break;
 
 		default:
@@ -144,23 +118,6 @@ public class SearchPageObjects extends Interact {
 			Assert.fail("Product refinement is not displayed: " + text);
 		}
 	}
-
-
-	public void DisplayedProductRefinementList()
-	{
-		List<WebElement> refinements = getListOfWebElements(product_refinement_list);
-
-		for(int i=0;i<refinements.size();i++)
-		{
-			String refinementsList=refinements.get(i).getText();
-			scn.write(refinementsList);
-		}
-
-	}
-	
-String str ="abc";
-
-
 }
 
 

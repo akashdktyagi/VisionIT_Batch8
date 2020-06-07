@@ -25,7 +25,7 @@ Feature: Search functionality
 		Then I am able to see product description and detail in new tab
 	
 	 @TC0006
-    Scenario: Validate search product refinements
+    Scenario: Validate Search Product Refinements for Product Type "Refrigerator"
       Given I have browser opened and url is navigated
       When I search for product as a "Refrigerator"
       Then Below Search product refinements should displayed
@@ -33,11 +33,6 @@ Feature: Search functionality
              |Department|
 		         |Avg. Customer Review| 
 		         |Brand| 
-	           |Pay On Delivery| 
-		         |Colour| 
-		         |Refrigerator Defrost Type|
-		         |Appliances Family Size| 
-		         |Energy Star Rating| 
-		         |Refrigerator Door Type| 
-		         |Cooling Goods Capacity| 
+	           |Filters| 
+		         
        	           

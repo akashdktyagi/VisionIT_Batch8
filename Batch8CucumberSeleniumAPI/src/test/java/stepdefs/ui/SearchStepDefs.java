@@ -138,11 +138,7 @@ public class SearchStepDefs extends TestBase{
 				scn.write("Exception thrown: "+e.getMessage());
 			}
 		}
-		
-		testContextUI.getSearchPageObjects().DisplayedProductRefinementList();
 	}
-	
-	
 	
 	@Before
 	public void SetUp(Scenario s) {
