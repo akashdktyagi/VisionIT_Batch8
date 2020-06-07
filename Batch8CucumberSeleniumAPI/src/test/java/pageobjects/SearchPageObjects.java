@@ -1,27 +1,33 @@
 package pageobjects;
-
 import java.util.List;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import cucumber.api.Scenario;
 import utils.ui.Interact;
-
 public class SearchPageObjects extends Interact {
-
 	Scenario scn;
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
-	
-	public SearchPageObjects(WebDriver driver,Scenario s) {
+
+
+	public SearchPageObjects(WebDriver driver,Scenario s) 
+	{
 		setDriver(driver);
 		this.scn = s;
 	}
-	
+
+	public String ClickOnFirstProduct()
+	{
+		List<WebElement> list = getListOfWebElements(product_list);
+		clickElement(list.get(1));
+		scn.write("Clicked on First Product Link");
+		return list.get(1).getText();
+	}
+
+
 	public String ClickOnProductLink() {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(0));
@@ -57,7 +63,6 @@ public class SearchPageObjects extends Interact {
 		}
 		
 		return list.get(counter).getText();
-
 	}
 	
 	public void ValidateProductList(String productName) {

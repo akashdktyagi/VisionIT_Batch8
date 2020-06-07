@@ -1,11 +1,10 @@
 @ui @search
 Feature: Search functionality
-
-
 	@TC0001
   Scenario: Search a product 
     Given I have browser opened and url is navigated
     When I search for product as "Dell"
+    And I search for product as "Dell"
     Then product list should appear pertaining to the product search as "Dell"
 
   @TC0004
@@ -24,13 +23,7 @@ Feature: Search functionality
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
 		
-		@TC0023
-		Scenario: Verify after clicking on cart displayed in the header, the page is navigated to Shopping cart 
-		Given I have browser opened and url is navigated
-		When I search for product as "Dell"
-		And I click on add to cart 
-		Then product displayed in the header
-		Then The Page Is Navigated To Shopping Cart 
+		
 		
 		
 	  

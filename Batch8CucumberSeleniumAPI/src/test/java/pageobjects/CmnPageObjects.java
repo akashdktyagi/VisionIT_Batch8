@@ -1,5 +1,4 @@
 package pageobjects;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -7,15 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import cucumber.api.Scenario;
-
 import utils.ui.Interact;
-
 public class CmnPageObjects extends Interact {
 	private static final Logger logger = LogManager.getLogger(CmnPageObjects.class);
 	Scenario scn;
-
 	private By search_text_box = By.id("twotabsearchtextbox");
 	private By search_button = By.xpath("//input[@value='Go']");
 	private By hamburger_menu_link =  By.id("nav-hamburger-menu");
@@ -25,6 +20,7 @@ public class CmnPageObjects extends Interact {
 	private By nav_link_orders =  By.id("nav-orders");
 	private By nav_link_acount =  By.id("nav-link-accountList");
 
+	private By cart_Product_count=By.id("nav-cart-count");
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
 
@@ -33,23 +29,28 @@ public class CmnPageObjects extends Interact {
 		this.scn = s;
 	}
 
+	public String get_Cart_value()
+	{
+		String cartValue=getText(cart_Product_count);
+		logger.info("Cart Product Value:"+cartValue);		
+		return cartValue;
+
+	}
+
 	public void SetSearchTextBox(String text) {
 		setElement(search_text_box, text);
 		logger.info("Value enetered in search box: " + text);
 		takeScreenShotAndAttachInReport(scn);
 	}
-
 	public void ClickOnSearchButton() {
 		clickElement(search_button);	
 		logger.info("Clicked on Search Button");
 	}
-
 	public void ClickOnHamburgerMenuButton() {
 		clickElement(hamburger_menu_link);
 		scn.write("Clicked on Hamburger Menu Link");
 		logger.info("Clicked on Hamburger Menu Button");
 	}
-
 	public void ClickOnHamburgerMenuProductCategoryLink(String linkText) {
 		By byElement = By.xpath(String.format(hamburger_menu_category_link_xpath,linkText));
 		clickElement(byElement);
@@ -63,12 +64,10 @@ public class CmnPageObjects extends Interact {
 		scn.write("Clicked on Hamburger Menu SubCategory link: " + linkText);
 		logger.info("Clicked on Hamburger Menu SubCategory link: " + linkText);
 	}
-
 	public void validateHamBurgerMenuIsDisplayed() {
 		boolean b = validateElementIsDisplayed(hamburger_menu_link);
 		Assert.assertEquals(true, b);
 	}
-
 	public void validateAmazonLogo() {
 		boolean b = validateElementIsDisplayed(nav_link_logo);
 		Assert.assertEquals(true, b);
@@ -81,12 +80,9 @@ public class CmnPageObjects extends Interact {
 		scn.write("Page title matched: " + expectedTitle );
 	}
 	
-
 	public void validateElementPresentInHeaderSection(String text) throws Exception {
 		boolean b=false;
-
 		switch(text.toLowerCase().trim()) {
-
 		case "hamburger menu":
 			b = validateElementIsDisplayed(hamburger_menu_link);
 			break;
@@ -113,7 +109,6 @@ public class CmnPageObjects extends Interact {
 			scn.write("Header Link Description is not present in the case. Please add link description first.");
 			throw new Exception("Header Link Description is not present in the case. Please add link description first.");
 		}
-
 		if (b) {
 			scn.write("Header Link is displayed: " + text);
 			Assert.assertEquals(true, b);
@@ -122,7 +117,5 @@ public class CmnPageObjects extends Interact {
 			logger.fatal("Header Link is not displayed: " + text);
 			Assert.fail("Header Link is not displayed: " + text);
 		}
-
 	}
-
 }
