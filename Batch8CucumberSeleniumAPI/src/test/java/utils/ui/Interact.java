@@ -24,7 +24,7 @@ import cucumber.api.Scenario;
 public abstract class Interact {
 
 	private static final Logger logger = LogManager.getLogger(Interact.class);
-	private WebDriver driver;
+	protected WebDriver driver;
 	
 	public WebDriver getDriver() {
 		 return driver;
