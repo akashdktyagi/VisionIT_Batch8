@@ -128,6 +128,11 @@
 					<systemPropertyVariables>
 						<cucumber.options>${cucumber.options}</cucumber.options>
 					</systemPropertyVariables>
+					<parallel>methods</parallel>
+					<threadCount>4</threadCount>
+					<perCoreThreadCount>false</perCoreThreadCount>
+					<useUnlimitedThreads>true</useUnlimitedThreads>
+					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
