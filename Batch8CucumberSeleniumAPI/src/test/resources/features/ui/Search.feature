@@ -1,7 +1,6 @@
 @ui @search
 Feature: Search functionality
 
-
 	@TC0001
   Scenario: Search a product 
     Given I have browser opened and url is navigated
@@ -16,7 +15,6 @@ Feature: Search functionality
 	  And I click on hamburger menu with sub category as "Power Banks"
 	  Then Search results are displayed for products related to "Power Banks"
 	  
-	  
 	 @TC0008 
 	 Scenario: A User Should Be Able To Click On A Product Link From The Search Page And Product Description Page Should Be Displayed.
 		Given I have browser opened and url is navigated
@@ -24,3 +22,12 @@ Feature: Search functionality
 		And I click on any product in the Search Result
 		Then I am able to see product description and detail in new tab
 	  
+	  @TC0028
+	  Scenario: Verify Pagination On Product Search Page
+		Given I have browser opened and url is navigated
+		When I search for product as "Dell"
+    Then Pagination panel with products of first page are displayed by default
+    And Previous, Page Links and Next link are working as expected
+    	 
+	 
+	

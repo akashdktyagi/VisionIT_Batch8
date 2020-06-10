@@ -16,12 +16,38 @@ public class SearchPageObjects extends Interact {
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
-	
+	private By PreviousBtn = By.xpath("//li[text()='Previous']");
+	private By ClickPreviousBtn= By.xpath("//a[text()='Previous']");
+	private By ClickNextBtn = By.xpath("//a[text()='Next']");
+	private By NextBtn = By.xpath("//li[text()='Next']");
+	private By PaginationBar=By.xpath("//ul[@class='a-pagination']");
+	private By DisableBtn=By.xpath("//li[@class='a-normal']");
+    
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
 		this.scn = s;
 	}
-	
+	public void ValidatePaginationBar() {
+		validateElementIsDisplayed(PaginationBar);
+	}
+	public void CheckPreviousBtn() {
+		 validateElementIsDisplayed(PreviousBtn);
+	}
+	public void ClickOnlastPageLink() {
+		while(validateElementIsDisplayed(PreviousBtn))
+		{
+			clickElement(ClickNextBtn);
+		}		 
+	}
+	public void CheckNextBtn() {
+		 validateElementIsDisplayed(NextBtn);
+	}
+	public void ClickOnFirstPageLink() {
+		String Button=getAttribute(ClickPreviousBtn, "class");
+		while(!Button.contains("a-disabled")) {
+			clickElement(ClickPreviousBtn);	
+		}
+	}
 	public String ClickOnProductLink() {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(0));
