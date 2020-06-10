@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import context.TestContextUI;
 import cucumber.api.Scenario;
 import utils.ui.Interact;
 
@@ -16,12 +17,17 @@ public class SearchPageObjects extends Interact {
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
-	
+	private By cart = By.xpath("//*[@id='nav-cart']");
+	private By subTotal = By.xpath("//*[@id='sc-subtotal-label-buybox']");
 	public SearchPageObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
 		this.scn = s;
 	}
 	
+	public void NumberOfProductsSelected() {
+		getText(cart);
+	
+	}
 	public String ClickOnProductLink() {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(0));
@@ -71,5 +77,20 @@ public class SearchPageObjects extends Interact {
 			}
 		}
 		
+		
 	}
+	public void ValidatenumberofProducts() {
+		String expected="Subtotal (10 item):";
+		String actual=getText(subTotal);
+		Assert.assertEquals(expected, actual);
+		scn.write("Subtotal Displayed as: "+ "(10 item)");
+	}
+	
+	public void ValidateCartCount() {
+		String expected="Subtotal (2 item):";
+		String actual=getText(subTotal);
+		Assert.assertEquals(expected, actual);
+		scn.write("Subtotal Displayed as: "+ "(2 item)");
+	}
+	
 }

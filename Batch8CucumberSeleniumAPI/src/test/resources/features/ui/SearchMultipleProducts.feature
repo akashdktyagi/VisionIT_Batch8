@@ -6,9 +6,9 @@ Feature: Search Mutiple Product Fuctionality
   Scenario: Search Mutiple Products
   
   Given I have browser opened and url is navigated
-	When I search for and add single product <Product Name> of each category as below
-			| Products                   |
-      | Mobile                     |
+	#When I search for and add single product <Product Name> of each category as below
+  When I search for and add single product of each category as below
+      | Laptop                     |
       | Computer                   |
       | LED TV                     |
       | Pantry                     |

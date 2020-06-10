@@ -12,34 +12,43 @@ import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 import utils.ui.Interact;
 
-public class SearchMutipleProducts extends Interact {
+public class SearchMutipleProducts {
 	TestContextUI testContextUI;
 	Scenario scn;
+	Integer proIndex;
+	
+	public SearchMutipleProducts(TestContextUI testContextUI) {
+		this.testContextUI = testContextUI;
+	}
 
-	@When("I search for and add single product <Product Name> of each category as below")
-	public void i_search_for_and_add_single_product_Product_Name_of_each_category_as_below(List<String> list){
-		try {
+	@When("I search for and add single product of each category as below")
+	public void i_search_for_and_add_single_product_Product_Name_of_each_category_as_below(List<String> list)throws Exception{
 			for (int i = 0; i < list.size(); i++) {
 				testContextUI.getCmnPageObjects().SetSearchTextBox(list.get(i));
 				testContextUI.getCmnPageObjects().ClickOnSearchButton();
-				testContextUI.getSearchPageObjects().ClickOnProductLink();
-				testContextUI.getDriver().switchTo().window((String) testContextUI.getDriver().getWindowHandles().toArray()[1]);
-				testContextUI.getCmnPageObjects().ClickOnAddToCart();
+				i_click_on_first_product_in_the_Search_Result();
+				i_click_on_Add_To_Cart_button();
 				testContextUI.getDriver().close();
 				testContextUI.getDriver().switchTo().window((String) testContextUI.getDriver().getWindowHandles().toArray()[0])
 						.navigate().refresh();
 				testContextUI.getCmnPageObjects().CleartextBox();
 			}
-		} catch (NullPointerException e) {
-			System.out.println("NullPointerException thrown!");
-		}
-
 	}
 
 	@Then("All the products should be added in the cart")
 	public void all_the_products_should_be_added_in_the_cart() {
+		testContextUI.getSearchPageObjects().ValidatenumberofProducts();
 		testContextUI.getCmnPageObjects().ClickOnCart();
 		testContextUI.getCmnPageObjects().proceedToBuyProduts();
+	}
+	
+	public void i_click_on_first_product_in_the_Search_Result() {
+	testContextUI.getSearchPageObjects().ClickOnProductLink();
+	}
+	public void i_click_on_Add_To_Cart_button() throws Exception {
+		testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[1]);
+   		testContextUI.getCmnPageObjects().ClickOnAddToCart();
+   		Thread.sleep(15000);
 	}
 
 }
