@@ -16,9 +16,10 @@ public class HomePageObjects extends Interact {
 	private static final Logger logger = LogManager.getLogger(HomePageObjects.class);
 	Scenario scn;
 
-	private String product_category = "//a[ contains(@aria-label,'%s')]";
+	private String product_category = "//a[contains(@aria-label,'%s')]";
 	private By product_list = By.xpath("//span[@class='a-truncate a-size-base']");
-	
+	private By product = By.xpath("//span[@id='productTitle']");
+			
 	public HomePageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
 		this.scn = s;
@@ -36,7 +37,7 @@ public class HomePageObjects extends Interact {
 		clickElement(list.get(0));
 		scn.write("Clicked on first Product in the list");
 		logger.info("Clicked on first Product in the list");
-		return list.get(0).getText();
+		return getText(product);
 	}
 	
 }

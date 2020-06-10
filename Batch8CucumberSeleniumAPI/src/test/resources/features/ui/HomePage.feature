@@ -22,7 +22,7 @@ Feature: Home Page Validation
 		@TC0021
 		Scenario: User should be able to navigate to the products present in the HomePage
 	  Given I have browser opened and url is navigated
-		And I click on "Grocery essentials"
+		And I click on "Musical instruments"
 		When I click on any product in the list
 	  Then I am able to see product description and details
 	  
