@@ -13,14 +13,14 @@ import utils.ui.Interact;
 public class ProductDescriptionObjects extends Interact {
 
 	Scenario scn;
-	
-	private By product_header_element = By.xpath("//span[@id='productTitle']']");
-	
+
+	private By product_header_element = By.xpath("//span[@id='productTitle']");
+
 	public ProductDescriptionObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);
 		this.scn = s;
 	}
-	
+
 	public void ValidateProductDescriptionHeader(String expected) {
 		String actual = getText(product_header_element);
 		scn.write("actual: " + actual + " , Expected: " + expected);
