@@ -8,8 +8,8 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features="classpath:features",
-		glue="stepdefs",
+		features="classpath:features/ui",
+		glue="stepdefs/ui",
 		plugin = {"pretty",
 				"html:target/html/",
 				"json:target/json/file.json",

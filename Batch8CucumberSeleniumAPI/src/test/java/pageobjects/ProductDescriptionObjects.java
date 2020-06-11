@@ -14,7 +14,7 @@ public class ProductDescriptionObjects extends Interact {
 
 	Scenario scn;
 	
-	private By product_header_element = By.xpath("//span[@id='productTitle']']");
+	private By product_header_element = By.xpath("//span[@id='productTitle']");
 	
 	public ProductDescriptionObjects(WebDriver driver,Scenario s) {
 		setDriver(driver);

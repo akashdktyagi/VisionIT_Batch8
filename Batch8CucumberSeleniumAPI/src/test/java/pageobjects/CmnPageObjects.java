@@ -25,8 +25,11 @@ public class CmnPageObjects extends Interact {
 	private By nav_link_orders =  By.id("nav-orders");
 	private By nav_link_acount =  By.id("nav-link-accountList");
 
-	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
-	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
+	private String hamburger_menu_category_link_xpath ="//div[@id='hmenu-content']//div[text()='%s']";
+	private String hamburger_menu_sub_category_link_xpath="//div[@id='hmenu-content']//a[text()='%s']";
+
+	private By search_text_box2 = By.id("twotabsearchtextbox");
+	private By search_button2 = By.xpath("//input[@value='Go']");
 
 	public CmnPageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
@@ -56,12 +59,22 @@ public class CmnPageObjects extends Interact {
 		scn.write("Clicked on Hamburger Menu Category link: " + linkText);
 		logger.info("Clicked on Hamburger Menu Category link: " + linkText);
 	}
-	
+
 	public void ClickOnHamburgerMenuProductSubCategoryLink(String linkText) {
 		By byElement = By.xpath(String.format(hamburger_menu_sub_category_link_xpath,linkText));
 		clickElement(byElement);
 		scn.write("Clicked on Hamburger Menu SubCategory link: " + linkText);
 		logger.info("Clicked on Hamburger Menu SubCategory link: " + linkText);
+	}
+
+	public void SetSearchTextBox2(String text) {
+		setElement(search_text_box, text);
+		logger.info("Value enetered in search box: " + text);
+		takeScreenShotAndAttachInReport(scn);
+	}
+	public void ClickOnSearchButton2(){
+		clickElement(search_button);	
+		logger.info("Clicked on Search Button");
 	}
 
 	public void validateHamBurgerMenuIsDisplayed() {
@@ -73,14 +86,14 @@ public class CmnPageObjects extends Interact {
 		boolean b = validateElementIsDisplayed(nav_link_logo);
 		Assert.assertEquals(true, b);
 	}
-	
+
 	public void validatePageTitleMatch(String expectedTitle) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
 		Boolean b = wait.until(ExpectedConditions.titleContains(expectedTitle));
 		Assert.assertEquals(true, b);
 		scn.write("Page title matched: " + expectedTitle );
 	}
-	
+
 
 	public void validateElementPresentInHeaderSection(String text) throws Exception {
 		boolean b=false;
