@@ -40,31 +40,11 @@ public class SearchStepDefs extends TestBase{
 	@Given("^I have browser opened and url is navigated$")
 	public void i_have_browser_opened_and_url_is_navigated() throws Exception {	
 
-		/* Various ways of invoking Web Driver*/
-		/* Mehtod - 1*/
 		DriverManager driverManager = DriverFactory.getDriverManager("chrome");
 		WebDriver driver = driverManager.getDriver();
 		driverManager.maximizeBrowser();
 		driverManager.navigateToDriver(serverUI);
 
-		/* OR Mehtod - 2*/
-		/*
-		 *WebDriver driver = new ChromeDriver();
-		 *driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
-		 *driver.manage().window().maximize();
-		 *driver.get(serverUI);
-		 */
-
-
-		/* OR Mehtod - 3*/
-		/*
-		 WebDriver driver = WebDriverManagerSingleton.getInstanceOfWebDriverManager().getDriver();
-		 */
-
-		/* OR Mehtod - 4*/
-		/*
-		WebDriver driver = WebDriverManagerSimple.getDriver("chrome");
-		 */
 		scn.write("Chrome Driver invoked and URL navigated as: " + serverUI);
 		//Assign driver and set page Objects to Test Context 
 		testContextUI.setDriver(driver);
@@ -76,7 +56,6 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getCmnPageObjects().SetSearchTextBox(product);
 		testContextUI.getCmnPageObjects().ClickOnSearchButton();
 		scn.write("Search was sucessfull");
-
 	}
 
 	@Then("product list should appear pertaining to the product search as {string}")
@@ -126,25 +105,16 @@ public class SearchStepDefs extends TestBase{
 	public void product_List_Should_Appear_Having_Product_Search_As_With_Price_Under(String Mobile, String stringValue) {
 		testContextUI.getSearchPageObjects().ValidateProductListForMobile(stringValue);
 	}
-
-
+	
 	@Before
 	public void SetUp(Scenario s) {
 		this.scn = s;
 	}
 
-
 	@After
 	public void CleanUp(Scenario s) {
-
-		/*if (s.isFailed()) {
-			TakesScreenshot scrnShot = (TakesScreenshot)testContextUI.getDriver();
-			byte[] data = scrnShot.getScreenshotAs(OutputType.BYTES);
-			scn.embed(data, "image/png");
-		}*/
 
 		testContextUI.getDriver();
 		scn.write("Browser is Closed");
 	}
-
 }
