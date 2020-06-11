@@ -1,5 +1,6 @@
 package stepdefs.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import context.TestContextUI;
@@ -13,32 +14,24 @@ public class AddToCartStepDefs {
 
 	TestContextUI testContextUI;
 	Scenario scn;
-	Integer proIndex;
 
 	public AddToCartStepDefs(TestContextUI testContextUI) {
 		this.testContextUI = testContextUI;
 	}
 
-	@Given("I search the products given below and add them to cart")
-	public void i_search_the_products_given_below_and_add_them_to_cart(List<String> list) throws Exception {
-
-		for(int i=0;i<list.size();i++) {
-
-			//search and click on search btn
-			testContextUI.getCmnPageObjects().SetSearchTextBox(list.get(i));
+	@Given("I have {int} products added in the cart")
+	public void i_have_products_added_in_the_cart(Integer proCount) throws Exception {
+		for(int i=0; i<proCount; i++) {
+			testContextUI.getCmnPageObjects().SetSearchTextBox(ProductList().get(i));
 			testContextUI.getCmnPageObjects().ClickOnSearchButton();
 
-			//select first product in the list displayed
 			i_click_on_first_product_in_the_Search_Result();
-
-			//add product to the cart
 			i_click_on_Add_To_Cart_button();
 
 			testContextUI.getDriver().close();
 			testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[0]).navigate().refresh();
 			testContextUI.getCmnPageObjects().ClearSearchTextBox();
-
-		}	
+		}		
 	}
 
 	@And("I click on first product in the Search Result")
@@ -50,29 +43,32 @@ public class AddToCartStepDefs {
 	public void i_click_on_Add_To_Cart_button() throws Exception {
 		testContextUI.getDriver().switchTo().window((String)testContextUI.getDriver().getWindowHandles().toArray()[1]);
 		testContextUI.getAddToCartPageObjects().ClickOnAddToCartBtn();
-		Thread.sleep(15000);
+		Thread.sleep(10000);
 	}
 
-	@When("I click on the Cart button present in the Header section")
-	public void i_click_on_the_Cart_button_present_in_the_Header_section() {
+	@When("I delete one product from the cart")
+	public void i_delete_one_product_from_the_cart() {
 		testContextUI.getAddToCartPageObjects().ClickOnCartBtn();
-	}
-
-	@When("I click on Delete button for {string} Product")
-	public void i_click_on_Delete_button_for_Product(String proName) {
 		testContextUI.getAddToCartPageObjects().DeleteProductLink(0);
 	}
 
-	@Then("I validate the Subtotal as {int} item")
-	public void i_validate_the_Subtotal_as_item(Integer int1) {
+	@Then("cart should be updated accordingly")
+	public void cart_should_be_updated_accordingly() {
 		testContextUI.getAddToCartPageObjects().ValidateSubTotalAfterDeletion();
 	}
 
-	//***********************for TC0033***********************
+	public static ArrayList<String> ProductList() {
+		ArrayList<String> productList = new ArrayList<String>();
+		productList.add("Laptop");
+		productList.add("Earphones");
+		return productList;
+	}
 
-	@Given("I search for product as Dell and add it to cart")
-	public void i_search_for_product_as_Dell_and_add_it_to_cart() throws Exception {
-		testContextUI.getCmnPageObjects().SetSearchTextBox("Dell");
+	//***********************for TC0041***********************
+
+	@Given("I search for product as Laptop and add it to cart")
+	public void i_search_for_product_as_Laptop_and_add_it_to_cart() throws Exception {
+		testContextUI.getCmnPageObjects().SetSearchTextBox("Laptop");
 		testContextUI.getCmnPageObjects().ClickOnSearchButton();
 
 		i_click_on_first_product_in_the_Search_Result();
@@ -96,7 +92,8 @@ public class AddToCartStepDefs {
 
 	@When("I click on Delete button")
 	public void i_click_on_Delete_button() {
-		testContextUI.getAddToCartPageObjects().DeleteProductLink(0);
+		testContextUI.getAddToCartPageObjects().ClickOnCartBtn();
+		testContextUI.getAddToCartPageObjects().ClickOnDeleteBtn();
 	}
 
 	@Then("I get message as {string}")
