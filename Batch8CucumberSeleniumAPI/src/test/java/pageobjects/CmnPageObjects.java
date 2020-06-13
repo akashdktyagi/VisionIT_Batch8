@@ -62,9 +62,9 @@ public class CmnPageObjects extends Interact {
 		try {
 			for(int i = 1; i <= autolist.size(); i++) {
 				By byElement = By.xpath(String.format(autosuggestion_list, i));
-				String x = getText(byElement);
-				if(x.contains(searchvalue.toLowerCase())) {
-					scn.write(x);
+				String elementInAutoSuggestionList = getText(byElement);
+				if(elementInAutoSuggestionList.contains(searchvalue.toLowerCase())) {
+					scn.write(elementInAutoSuggestionList);
 				}
 				//			else {
 				//				System.out.println("Value does not match");
