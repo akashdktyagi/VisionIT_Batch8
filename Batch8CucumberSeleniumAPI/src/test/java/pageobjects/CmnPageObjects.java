@@ -56,22 +56,22 @@ public class CmnPageObjects extends Interact {
 	public void AutosuggestionSearchIn(String productName) throws InterruptedException {
 		setElement(search_text_box, productName);
 		String searchvalue = getAttribute(search_text_box, "value");
-		System.out.println(productName);
+		scn.write(productName);
 		List<WebElement> autolist = getListOfWebElements(auto_suggestion); 
-		System.out.println("Size of Autosuggestion list is: " + autolist.size());
+		scn.write("Size of Autosuggestion list is: " + autolist.size());
 		try {
 			for(int i = 1; i <= autolist.size(); i++) {
 				By byElement = By.xpath(String.format(autosuggestion_list, i));
 				String x = getText(byElement);
 				if(x.contains(searchvalue.toLowerCase())) {
-					System.out.println(x);
+					scn.write(x);
 				}
 				//			else {
 				//				System.out.println("Value does not match");
 				//			}
 			}
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			scn.write(e.getMessage());
 		}
 	}
 
