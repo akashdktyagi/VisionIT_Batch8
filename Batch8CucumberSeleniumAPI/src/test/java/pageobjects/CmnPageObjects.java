@@ -2,6 +2,8 @@ package pageobjects;
 
 import static org.testng.Assert.fail;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -9,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,9 +31,11 @@ public class CmnPageObjects extends Interact {
 	private By nav_link_prime =  By.id("nav-link-prime");
 	private By nav_link_orders =  By.id("nav-orders");
 	private By nav_link_acount =  By.id("nav-link-accountList");
+	private By auto_suggestion = By.xpath("//div[@id='suggestions']/div");
 
 	private String hamburger_menu_category_link_xpath =  "//div[@id='hmenu-content']//div[text()='%s']";
 	private String hamburger_menu_sub_category_link_xpath =  "//div[@id='hmenu-content']//a[text()='%s']";
+	private String autosuggestion_list = "//div[@id='suggestions']/div[%s][@data-keyword]";
 
 	public CmnPageObjects(WebDriver driver, Scenario s) {
 		setDriver(driver);
@@ -47,26 +52,27 @@ public class CmnPageObjects extends Interact {
 		clickElement(search_button);	
 		logger.info("Clicked on Search Button");
 	}
-	
-	public void AutosuggestionSearchIn(String productName) throws InterruptedException {
-		setElement(search_text_box, Keys.DOWN);
-		
-		String text = getAttribute(search_text_box,"value");
-		System.out.println("Text is "+ text);	
-		for(int i = 0; i < 11; i++) {
-			setElement(search_text_box, Keys.DOWN);
-			Thread.sleep(1500);
-			String  item = getAttribute(search_text_box,"value");
-			Thread.sleep(1000);
-			if(item.contains(productName)) {
-				System.out.println(item);
-			}else {
-				System.out.println("Item Name does not match with the value entered in the text box!");
-			}
-		}
-		setElement(search_text_box,Keys.TAB);
-		clickElement(search_text_box);
 
+	public void AutosuggestionSearchIn(String productName) throws InterruptedException {
+		setElement(search_text_box, productName);
+		String searchvalue = getAttribute(search_text_box, "value");
+		System.out.println(productName);
+		List<WebElement> autolist = getListOfWebElements(auto_suggestion); 
+		System.out.println("Size of Autosuggestion list is: " + autolist.size());
+		try {
+			for(int i = 1; i <= autolist.size(); i++) {
+				By byElement = By.xpath(String.format(autosuggestion_list, i));
+				String x = getText(byElement);
+				if(x.contains(searchvalue.toLowerCase())) {
+					System.out.println(x);
+				}
+				//			else {
+				//				System.out.println("Value does not match");
+				//			}
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void ClickOnHamburgerMenuButton() {
@@ -81,7 +87,7 @@ public class CmnPageObjects extends Interact {
 		scn.write("Clicked on Hamburger Menu Category link: " + linkText);
 		logger.info("Clicked on Hamburger Menu Category link: " + linkText);
 	}
-	
+
 	public void ClickOnHamburgerMenuProductSubCategoryLink(String linkText) {
 		By byElement = By.xpath(String.format(hamburger_menu_sub_category_link_xpath,linkText));
 		clickElement(byElement);
@@ -98,14 +104,14 @@ public class CmnPageObjects extends Interact {
 		boolean b = validateElementIsDisplayed(nav_link_logo);
 		Assert.assertEquals(true, b);
 	}
-	
+
 	public void validatePageTitleMatch(String expectedTitle) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
 		Boolean b = wait.until(ExpectedConditions.titleContains(expectedTitle));
 		Assert.assertEquals(true, b);
 		scn.write("Page title matched: " + expectedTitle );
 	}
-	
+
 
 	public void validateElementPresentInHeaderSection(String text) throws Exception {
 		boolean b=false;

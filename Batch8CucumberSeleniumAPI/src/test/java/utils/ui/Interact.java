@@ -61,14 +61,6 @@ public abstract class Interact {
 		return element;
 	}
 	
-	public WebElement setElement(By by, Keys down) {
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
-		element.sendKeys(down);
-		logger.info("Element is Set with text as: " + down + ". Element Description: " + by.toString());
-		return element;
-	}
-	
 	public String getAttribute(By by, String attName) {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));

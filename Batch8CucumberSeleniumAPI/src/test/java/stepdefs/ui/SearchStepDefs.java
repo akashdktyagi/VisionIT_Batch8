@@ -125,9 +125,7 @@ public class SearchStepDefs extends TestBase{
 	@Then("I am able to see autosuggestion options having keyword {string}")
 	public void i_am_able_to_see_autosuggestion_options_having_keyword(String productName) throws InterruptedException {
 		testContextUI.getCmnPageObjects().AutosuggestionSearchIn(productName);
-	}
-
-	
+	}	
 	
 	@Before
 	public void SetUp(Scenario s) {

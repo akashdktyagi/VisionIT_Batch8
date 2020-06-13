@@ -16,7 +16,7 @@ import cucumber.api.junit.Cucumber;
 				"json:target/json/file.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 		},
-		strict=false,
+		strict=true,
 		dryRun=false
 		
 
