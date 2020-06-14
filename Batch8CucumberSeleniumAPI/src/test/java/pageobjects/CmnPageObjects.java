@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 
 import cucumber.api.Scenario;
 
@@ -56,14 +57,14 @@ public class CmnPageObjects extends Interact {
 	public void AutosuggestionSearchIn(String productName) throws InterruptedException {
 		List<WebElement> autolist = getListOfWebElements(auto_suggestion); 
 		scn.write("Size of Autosuggestion list is: " + autolist.size());
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		try {
 			for(int i = 1; i <= autolist.size(); i++) {
 				By byElement = By.xpath(String.format(autosuggestion_list, i));
 				String elementInAutoSuggestionList = getText(byElement);
-				if(elementInAutoSuggestionList.contains(productName)) {
-					scn.write(elementInAutoSuggestionList);
-				}
+				SoftAssert sa = new SoftAssert();
+				sa.assertTrue(elementInAutoSuggestionList.contains(productName));
+				scn.write(elementInAutoSuggestionList);
 			}
 		}catch(Exception e) {
 			scn.write(e.getMessage());

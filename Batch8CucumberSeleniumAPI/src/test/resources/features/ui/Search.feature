@@ -25,8 +25,8 @@ Feature: Search functionality
 	  @TC0017
 		Scenario: A User entered any keyword in search then in Search dropdown it should display appropriate options which is entered in the Search.
 	  Given I have browser opened and url is navigated
-		When I entered product as "Dell" in search
-		Then I am able to see autosuggestion options having keyword "Dell"
+		When I entered product as "Samsung" in search
+		Then I am able to see autosuggestion options having keyword "Samsung"
 		
 		@TC0040
 		Scenario: Check The Subtotal Of Cart Is Correct
