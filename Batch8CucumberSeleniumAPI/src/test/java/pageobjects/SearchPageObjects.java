@@ -31,7 +31,7 @@ public class SearchPageObjects extends Interact {
 	public String ClickOnProductLink() {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(0));
-		scn.write("Clicked on first Product Link");
+		scn.write("Clicked on First Product Link");
 		return list.get(0).getText();
 	}
 	
