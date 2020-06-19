@@ -16,7 +16,7 @@ public class SearchPageObjects extends Interact {
 	Scenario scn;
 	
 	private By product_list = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
-	private By product_list_all = By.xpath("//div[@class='s-result-list s-search-results sg-row']//span[@class='a-size-medium a-color-base a-text-normal']");
+	private By product_list_all = By.xpath("//div[@class='s-main-slot s-result-list s-search-results sg-row']//div[2]//div[1]//span[1]//div[1]//div[1]//div[1]//div[1]//div[2]//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//h2[1]//a[1]//span[1]");
 	private By cart = By.xpath("//*[@id='nav-cart']");
 	private By subTotal = By.xpath("//*[@id='sc-subtotal-label-buybox']");
 	public SearchPageObjects(WebDriver driver,Scenario s) {
@@ -31,7 +31,7 @@ public class SearchPageObjects extends Interact {
 	public String ClickOnProductLink() {
 		List<WebElement> list = getListOfWebElements(product_list_all);
 		clickElement(list.get(0));
-		scn.write("Clicked on First Product Link");
+		scn.write("Clicked on first Product Link");
 		return list.get(0).getText();
 	}
 	
